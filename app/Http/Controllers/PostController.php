@@ -42,7 +42,9 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        //
+        $user = auth()->user()->id;
+        $posts = Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        return view('post.show', compact('post'));
     }
 
     public function edit(Post $post)
