@@ -7,10 +7,10 @@
                 @if(Auth::check())
                     <div class="hidden space-x-8 md:ms-10 md:flex">
                         <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                            HOME
+                            日記を読む
                         </x-nav-link>
                         <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                            新規作成
+                            日記を書く
                         </x-nav-link>
                     </div>
                 @endif
@@ -22,7 +22,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
-                                class="inline-flex items-center px-3 py-2 text-sm leading-4 rounded-md border border-seventh hover:scale-110 focus:outline-none transition ease-in-out duration-300">
+                                class="inline-flex items-center px-3 py-2 text-sm leading-4 rounded-md border border-seventh hover:scale-105 focus:outline-none transition ease-in-out duration-200">
                                 <div>
                                     {{ Auth::user()->name }}
                                 </div>

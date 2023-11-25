@@ -1,11 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">投稿の新規作成</h2>
-
-        <x-validation-errors class="mb-4" :errors="$errors"/>
+        <h2 class="sm:text-3xl text-2xl mb-2 text-fourth">日記を書く</h2>
+        <p class="w-full leading-relaxed text-gray-500">Let out everything that comes to your mind.
+            Don't deny it, just overlook the feelings that are there.
+            When you let it all out, your heart will feel lighter and lighter.
+        </p>
         <x-message :message="session('message')" />
-
     </x-slot>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mx-4 sm:p-8">
           <form method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
