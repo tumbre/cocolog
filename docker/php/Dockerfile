@@ -31,7 +31,5 @@ RUN npm --version
 
 WORKDIR /src
 ADD . /src/storage
-RUN npm install -D tailwindcss postcss autoprefixer
-RUN npm install --save @fortawesome/fontawesome-free
 RUN chown -R www-data:www-data /src/storage
 ENTRYPOINT [ "bash", "-c", "composer install; npm install; exec php-fpm" ]

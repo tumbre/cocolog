@@ -154,8 +154,9 @@ return [
     */
 
     'attributes' => [
-        'title'=>'件名',
+        'title'=>'タイトル',
         'body'=>'本文',
+        'image'=>'写真',
         'email'=>'メールアドレス',
     ],
 
