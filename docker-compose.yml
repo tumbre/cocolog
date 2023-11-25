@@ -37,6 +37,15 @@ services:
         ports:
             - 3306:3306
 
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - 8080:80
+        environment:
+            - MYSQL_USERNAME=${DB_USERNAME}
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+            - PMA_HOST=cocolog-mysql
+
     cocolog-redis:
         image: redis:alpine
         container_name: "cocolog-redis"
