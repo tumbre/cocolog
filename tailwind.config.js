@@ -17,8 +17,8 @@ export default {
             colors: {
                 first: '#f3f4f6',
                 second: '#b2b2b2',
-                third: '#676767',
-                fourth: '#1d1d1f',
+                third: '#4b4b4b',
+                fourth: '#242427',
                 fifth: '#173260',
                 sixth: '#eb6038',
                 seventh: '#c1a26c'
