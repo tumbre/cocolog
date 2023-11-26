@@ -3,22 +3,39 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         //
     }
 
     /**
-     * Bootstrap any application services.
+     * The policy mappings for the application.
+     *
+     * @var array
      */
+    protected $policies = [
+        Post::class => PostPolicy::class,
+    ];
+
+    /**
+     * Register any authentication / authorization services.
+     *
+     * @return void
+     */
+
     public function boot(): void
     {
-        //
+        Gate::define('admin', function($user) {
+            foreach($user->roles as $role){
+                if($role->name=='admin') {
+                    return true;
+                }   
+            }
+            return false;
+        });
     }
 }

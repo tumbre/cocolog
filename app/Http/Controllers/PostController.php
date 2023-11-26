@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
+
     public function index()
     {
         $user = auth()->user()->id;
@@ -23,7 +28,7 @@ class PostController extends Controller
     {
         $inputs = $request->validate([
             'title' => 'required | max:255',
-            'body' => 'required | max:1000',
+            'body' => 'required | max:10000',
             'image' => 'image | max:1024'
         ]);
         $post = new Post();
@@ -37,7 +42,7 @@ class PostController extends Controller
             $post->image = $name;
         }
         $post->save();
-        return redirect()->route('post.create')->with('message', '投稿を作成しました');
+        return redirect()->route('post.show', compact('post'))->with('message', '投稿を作成しました');
     }
 
     public function show(Post $post)

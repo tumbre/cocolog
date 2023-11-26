@@ -1,10 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="sm:text-3xl text-2xl mb-2 text-fourth">日記を書き直す</h2>
-        <p class="w-full leading-relaxed text-gray-500">Let out everything that comes to your mind.
-            Don't deny it, just overlook the feelings that are there.
-            When you let it all out, your heart will feel lighter and lighter.
-        </p>
         <x-message :message="session('message')" />
     </x-slot>
 
