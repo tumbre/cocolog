@@ -1,4 +1,7 @@
 <x-app-layout>
+    <x-slot name="header">
+        <x-message :message="session('message')" />
+    </x-slot>
     <div class="pb-6 sm:pb-8 lg:pb-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
             <section class="flex flex-col justify-center items-center gap-6 sm:gap-10 md:gap-16 lg:flex-row lg:items-end">
