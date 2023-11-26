@@ -6,18 +6,23 @@
             <div class="flex items-center">
                 <a href="/" class="inline-flex items-center gap-2.5 text-2xl text-fourth md:text-3xl">cocolog</a>
                 <div class="hidden space-x-8 md:ms-10 md:flex">
-                    <x-nav-link :href="url('/')" :active="request()->is('/')">
+                    <a href="/" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         ホーム
-                    </x-nav-link>
-                    <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
+                    </a>
+                    <a href="{{ route('post.index') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         日記を読む
-                    </x-nav-link>
-                    <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
+                    </a>
+                    <a href="{{ route('post.create') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         日記を書く
-                    </x-nav-link>
-                    <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                    </a>
+                    <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         {{ __('Profile') }}
-                    </x-nav-link>
+                    </a>
+                    @can('admin')
+                    <a href="{{ route('profile.index') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
+                        ユーザー一覧
+                    </a>
+                    @endcan
                 </div>
             </div>
             <div class="hidden md:flex md:items-center md:ms-6">
@@ -66,24 +71,23 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden fixed w-full top-0 right-0 pt-12 z-10 bg-first">
         @if(Auth::check())
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="url('/')" :active="request()->is('/')">
+            <a href="/" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
                 ホーム
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
+            </a>
+            <a href="{{ route('post.index') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
                 日記を読む
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
+            </a>
+            <a href="{{ route('post.create') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
                 日記を書く
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+            </a>
+            <a href="{{ route('profile.edit') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
                 {{ __('Profile') }}
-            </x-responsive-nav-link>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                    {{ __('Log Out') }}
-                </x-responsive-nav-link>
-            </form>
+            </a>
+            @can('admin')
+            <a href="{{ route('profile.index') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
+                ユーザー一覧
+            </a>
+            @endcan
         </div>        
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
@@ -95,6 +99,12 @@
                 </div>
             </div>
         </div>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"  class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
+                {{ __('Log Out') }}
+            </a>
+        </form>
         @endif
     </div>
 </nav>
