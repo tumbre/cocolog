@@ -9,15 +9,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">    
+    <style>body { font-family: 'Zen Maru Gothic', serif; }</style>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-first">
+<body class="Zen Maru Gothic bg-first text-fourth antialiased mb-48">
+    <div class="min-h-screen">
         @include('layouts.navigation')
 
         <!-- Page Heading -->
