@@ -14,7 +14,7 @@
                     @else
                     <a href="{{ route('login') }}" class="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:justify-start">
                     @endif
-                        <button type="submit" class="rounded-full bg-fifth px-8 py-3 text-center text-sm md:text-base text-white hover:scale-110 shadow-lg transition duration-300">
+                        <button type="submit" class="rounded-full bg-fifth px-8 py-3 text-center text-sm md:text-base text-white hover:scale-105 hover:shadow-lg transition duration-300">
                             <div class="flex items-center justify-center">
                                 <i class="fa-solid fa-pen-fancy"></i>
                                 <p class="ml-2">Start now</p>
