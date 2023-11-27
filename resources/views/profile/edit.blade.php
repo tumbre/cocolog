@@ -2,7 +2,7 @@
     <section class="text-third body-font">
         <div class="container px-5 py-12 mx-auto">
             <x-slot name="header">
-                <h2 class="sm:text-3xl text-2xl mb-2 text-fourth">{{ __('Profile') }}</h2>
+                <h2 class="sm:text-2xl text-lg mb-2 text-fourth">{{ __('Profile') }}</h2>
                 <x-message :message="session('message')" />
             </x-slot>
 

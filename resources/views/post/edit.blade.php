@@ -2,6 +2,7 @@
     <x-slot name="header">
         <h2 class="sm:text-3xl text-2xl mb-2 text-fourth">日記を書き直す</h2>
         <x-message :message="session('message')" />
+        <x-validation-errors :message="session('message')" />
     </x-slot>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
