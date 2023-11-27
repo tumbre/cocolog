@@ -1,10 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="sm:text-3xl text-2xl mb-2 text-fourth">日記を書く</h2>
+        <h2 class="sm:text-2xl text-lg mb-2 text-fourth">日記を書く</h2>
         <x-message :message="session('message')" />
+        <x-validation-errors :message="session('message')" />
     </x-slot>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mx-4 sm:p-8">
             <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
                 @csrf
@@ -24,15 +25,17 @@
                         id="body">{{ old('body') }}</textarea>
                 </div>
 
-                <div class="w-full flex flex-col">
-                    <label for="image" class="font-semibold leading-none mt-6 mb-2">画像（1MBまで） </label>
-                    <div>
-                        <input id="image" type="file" name="image">
-                    </div>
+                <div class="mt-8 mb-20">
+                    @include('components.preview')
                 </div>
 
-                <x-primary-button class="mt-12 bg-sixth">記録する✍️</x-primary-button>
-
+                <button type="submit"
+                    class="my-12 w-full bg-white rounded-full border border-seventh cursor-pointer hover:shadow-lg transition duration-300 ease-in-out">
+                    <div class="flex items-center justify-center">
+                        <i class="fa-solid fa-pen-fancy"></i>
+                        <p class="ml-2">記録する</p>
+                    </div>
+                </button>
             </form>
         </div>
     </div>
