@@ -12,11 +12,28 @@ class PostController extends Controller
         $this->authorizeResource(Post::class, 'post');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $user = auth()->user()->id;
-        $posts = Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
-        return view('post.index', compact('posts'));
+        $posts = Post::where('user_id', $user)->orderBy('created_at', 'desc')->paginate(12);
+        $search = $request->input('search');
+        $query = Post::where('user_id', $user);
+
+        if ($search) {
+            $spaceConversion = mb_convert_kana($search, 's');
+            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
+
+            foreach ($wordArraySearched as $value) {
+                $query->where(function ($query) use ($value) {
+                    $query->orWhere('title', 'like', '%' . $value . '%')
+                        ->orWhere('body', 'like', '%' . $value . '%');
+                });
+            }
+
+            $posts = $query->orderBy('created_at', 'desc')->paginate(12);
+        }
+
+        return view('post.index', compact('posts', 'search'));
     }
 
     public function create()
@@ -29,7 +46,7 @@ class PostController extends Controller
         $inputs = $request->validate([
             'title' => 'required | max:255',
             'body' => 'required | max:100000',
-            'image' => 'image | max:1024'
+            'image' => 'image | max:10000'
         ]);
         $post = new Post();
             $post->title = $inputs['title'];
@@ -61,8 +78,8 @@ class PostController extends Controller
     {
         $inputs = $request->validate([
             'title' => 'required | max:255',
-            'body' => 'required | max:1000',
-            'image' => 'image | max:1024'
+            'body' => 'required | max:10000',
+            'image' => 'image | max:10000'
         ]);
 
         $post->title = $inputs['title'];
