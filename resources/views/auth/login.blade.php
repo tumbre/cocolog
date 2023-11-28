@@ -6,7 +6,7 @@
     </x-slot>
 
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    <div class="items-center mx-auto">
+    <div class="items-center mx-auto h-screen">
         <div class="flex flex-col w-full max-w-md mx-auto mt-12 px-6">
             <form method="POST" action="{{ route('login') }}">
                 @csrf

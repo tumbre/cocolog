@@ -4,7 +4,7 @@
     <section class="text-third body-font">
         <div class="container px-5 py-24 mx-auto">
             <x-slot name="header">
-                <h2 class="sm:text-2xl text-lg mb-2 text-fourth">日記を読む</h2>
+                <h2 class="sm:text-2xl text-lg mb-2 text-fourth">日記を見る</h2>
             </x-slot>
 
             @include('components.search-form')
