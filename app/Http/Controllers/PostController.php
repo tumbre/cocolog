@@ -98,11 +98,21 @@ class PostController extends Controller
         $post->title = $inputs['title'];
         $post->body = $inputs['body'];
 
-        if(request('image')) {
-            $original = request()->file('image')->getClientOriginalName();
-            $name = date('Ymd_His').'_'.$original;
-            $file = request()->file('image')->move('storage/images', $name);
-            $post->image = $name;
+        if ($request->hasFile('image')) {
+            if (app()->isLocal()) {
+                $original = request()->file('image')->getClientOriginalName();
+                $name = date('Ymd_His').'_'.$original;
+                request()->file('image')->storeAs('public/images', $name);
+                $post->image = $name;
+            } else {
+                $image = $request->file('image');
+                $path = Storage::disk('s3')->put('/', $image, 'public');
+                $post->image = Storage::disk('s3')->url($path);
+            }
+        }
+        
+        if (!$request->hasFile('image') && $post->image) {
+            $post->image = null;
         }
 
         $post->save();
