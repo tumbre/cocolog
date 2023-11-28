@@ -1,3 +1,5 @@
+@section('title', 'アカウント')
+
 <x-app-layout>
     <section class="text-third body-font">
         <div class="container px-5 py-12 mx-auto">

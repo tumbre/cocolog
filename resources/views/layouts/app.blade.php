@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @hasSection('title')
+        <title>@yield('title') | {{ config('app.name') }}</title>
+    @else
+        <title>{{ config('app.name') }}</title>
+    @endif
+    <link rel="shortcut icon" href="{{ asset('/favicon.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +29,7 @@
         <!-- Page Heading -->
         @if (isset($header))
             <header>
-                <div class="flex flex-wrap px-6 sm:px-12 lg:px-24 flex-col items-center text-center">
+                <div class="flex flex-wrap px-6 sm:px-12 mb-6 flex-col items-center text-center">
                     <x-message :message="session('message')" />
                     <x-validation-errors :message="session('message')" />
                     {{ $header }}

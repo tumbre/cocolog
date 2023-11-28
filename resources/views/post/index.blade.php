@@ -1,3 +1,5 @@
+@section('title', '日記を見る')
+
 <x-app-layout>
     <section class="text-third body-font">
         <div class="container px-5 py-24 mx-auto">

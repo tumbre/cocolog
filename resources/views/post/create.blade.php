@@ -1,3 +1,5 @@
+@section('title', '日記を書く')
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth">日記を書く</h2>

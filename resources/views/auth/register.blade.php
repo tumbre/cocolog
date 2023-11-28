@@ -1,3 +1,5 @@
+@section('title', '新規会員登録')
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth">{{ __('Register') }}</h2>

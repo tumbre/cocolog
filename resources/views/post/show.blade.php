@@ -1,3 +1,5 @@
+@section('title', $post->title)
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth">{{ $post->title }}</h2>
