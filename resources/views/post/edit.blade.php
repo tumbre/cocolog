@@ -31,7 +31,7 @@
                 </div>
 
                 <button type="submit"
-                    class="my-12 w-full bg-white rounded-full border border-seventh cursor-pointer hover:shadow-lg transition duration-300 ease-in-out">
+                    class="my-12 w-full bg-fifth text-white rounded-full border border-seventh cursor-pointer hover:shadow-lg transition duration-300 ease-in-out">
                     <div class="flex items-center justify-center">
                         <i class="fa-solid fa-pen-fancy"></i>
                         <p class="ml-2">記録する</p>

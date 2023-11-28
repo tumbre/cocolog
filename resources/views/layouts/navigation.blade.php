@@ -1,25 +1,22 @@
-<nav x-data="{ open: false }" class="mb-24 text-sm">
+<nav x-data="{ open: false }" class="mb-12 text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <!-- ログイン時 -->
             @if(Auth::check())
             <div class="flex items-center">
-                <a href="/" class="inline-flex items-center gap-2.5 text-2xl text-fourth md:text-3xl">cocolog</a>
-                <div class="hidden space-x-8 md:ms-10 md:flex">
-                    <a href="/" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
-                        ホーム
-                    </a>
-                    <a href="{{ route('post.index') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
+                <a href="/" class="inline-flex items-center gap-2.5 text-2xl text-seventh font-bold md:text-3xl">cocolog</a>
+                <div class="hidden space-x-8 md:ms-10 md:flex text-third">
+                    <a href="{{ route('post.index') }}" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         日記を見る
                     </a>
-                    <a href="{{ route('post.create') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
+                    <a href="{{ route('post.create') }}" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         日記を書く
                     </a>
-                    <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
+                    <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         {{ __('Profile') }}
                     </a>
                     @can('admin')
-                    <a href="{{ route('profile.index') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
+                    <a href="{{ route('profile.index') }}" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         ユーザー一覧
                     </a>
                     @endcan
@@ -29,9 +26,9 @@
                 <div class="block ml-auto">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <x-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                             {{ __('Log Out') }}
-                        </x-nav-link>
+                        </a>
                     </form>
                 </div>
             </div>
@@ -53,7 +50,7 @@
             <!-- ログアウト時 -->
             @else
             <div class="flex items-center">
-                <a href="/" class="inline-flex items-center gap-2.5 text-2xl md:text-3xl">cocolog</a>
+                <a href="/" class="inline-flex items-center gap-2.5 text-2xl text-seventh font-bold md:text-3xl">cocolog</a>
             </div>
             <div class="flex items-center ms-6">
                 <div class="block ml-auto">
