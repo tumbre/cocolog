@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Post::class, 'post');
+        $this->middleware(function ($request, $next) {
+            if (!auth()->check()) {
+                return redirect('/login')->with('message', 'ログインしてください');
+            }
+
+            return $next($request);
+        });
     }
 
     public function index(Request $request)
@@ -52,11 +59,17 @@ class PostController extends Controller
             $post->title = $inputs['title'];
             $post->body = $inputs['body'];
             $post->user_id = auth()->user()->id;
-        if (request('image')){
-            $original = request()->file('image')->getClientOriginalName();
-            $name = date('Ymd_His').'_'.$original;
-            request()->file('image')->storeAs('public/images', $name);
-            $post->image = $name;
+        if ($request->hasFile('image')) {
+            if (app()->isLocal()) {
+                $original = request()->file('image')->getClientOriginalName();
+                $name = date('Ymd_His').'_'.$original;
+                request()->file('image')->storeAs('public/images', $name);
+                $post->image = $name;
+            } else {
+                $image = $request->file('image');
+                $path = Storage::disk('s3')->put('/', $image, 'public');
+                $post->image = Storage::disk('s3')->url($path);
+            }
         }
         $post->save();
         return redirect()->route('post.show', compact('post'))->with('message', '投稿を作成しました');

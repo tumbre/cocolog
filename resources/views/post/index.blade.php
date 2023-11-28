@@ -1,9 +1,10 @@
+@section('title', '日記を見る')
+
 <x-app-layout>
     <section class="text-third body-font">
         <div class="container px-5 py-24 mx-auto">
             <x-slot name="header">
                 <h2 class="sm:text-2xl text-lg mb-2 text-fourth">日記を読む</h2>
-                <x-message :message="session('message')" />
             </x-slot>
 
             @include('components.search-form')
@@ -21,7 +22,7 @@
             @else
                 <div class="flex flex-wrap -m-4">
                     @foreach ($posts as $post)
-                        <section class="xl:w-1/3 md:w-1/2 p-4">
+                        <section class="xl:w-1/3 md:w-1/2 w-full p-4">
                             <a href="{{ route('post.show', $post) }}" class="w-full">
                                 <div
                                     class="bg-white w-full rounded-lg p-6 flex flex-col h-full hover:shadow-md transition duration-300">
@@ -30,8 +31,12 @@
                                     <hr class="w-full mb-8">
                                     <div class="mb-4">
                                         @if ($post->image)
-                                            <img src="{{ asset('storage/images/' . $post->image) }}"
-                                                class="h-52 rounded w-full object-cover object-center mb-6";>
+                                            @if (app()->isLocal())
+                                                <img src="{{ asset('storage/images/' . $post->image) }}"
+                                                    class="h-52 rounded w-full object-cover object-center mb-6";>
+                                            @else
+                                                <img src="{{ $post->image }}" class="h-52 rounded w-full object-cover object-center mb-6">
+                                            @endif
                                         @endif
                                     </div>
                                     <p class="flex-grow leading-relaxed text-base mb-8">

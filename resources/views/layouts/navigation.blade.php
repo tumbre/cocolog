@@ -10,7 +10,7 @@
                         ホーム
                     </a>
                     <a href="{{ route('post.index') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
-                        日記を読む
+                        日記を見る
                     </a>
                     <a href="{{ route('post.create') }}" class="inline-flex items-center px-1 pt-1 pb-2 border-b border-transparent leading-5 text-third hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         日記を書く
@@ -75,7 +75,7 @@
                 ホーム
             </a>
             <a href="{{ route('post.index') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
-                日記を読む
+                日記を見る
             </a>
             <a href="{{ route('post.create') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
                 日記を書く

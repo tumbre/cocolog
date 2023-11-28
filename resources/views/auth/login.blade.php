@@ -1,7 +1,8 @@
+@section('title', 'ログイン')
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth">{{ __('Login') }}</h2>
-        <x-message :message="session('message')" />
     </x-slot>
 
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -34,20 +35,6 @@
                     </button>
                 </div>
             </form>
-            <div class="relative my-6">
-                <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-300"></div>
-                </div>
-                <div class="relative flex justify-center text-sm">
-                    <span class="px-2 text-third bg-first">{{ __('Or continue with') }}</span>
-                </div>
-            </div>
-            <a href="#" class="block py-4 w-full text-center shadow-lg transition duration-200 hover:scale-105 rounded-full cursor-pointer">
-                <div class="flex items-center justify-center">
-                    <i class="fa-brands fa-google"></i>
-                    <span class="ml-4">{{ __('Log in with Google') }}</span>
-                </div>
-            </a>
             <div class="relative mt-20 mb-6">
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-gray-300"></div>
