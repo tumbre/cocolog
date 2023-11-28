@@ -25,6 +25,8 @@
         @if (isset($header))
             <header>
                 <div class="flex flex-wrap px-6 sm:px-12 lg:px-24 flex-col items-center text-center">
+                    <x-message :message="session('message')" />
+                    <x-validation-errors :message="session('message')" />
                     {{ $header }}
                 </div>
             </header>

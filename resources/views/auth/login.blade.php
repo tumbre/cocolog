@@ -1,7 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth">{{ __('Login') }}</h2>
-        <x-message :message="session('message')" />
     </x-slot>
 
     <x-auth-session-status class="mb-4" :status="session('status')" />

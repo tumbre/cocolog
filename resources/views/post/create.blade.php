@@ -1,8 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth">日記を書く</h2>
-        <x-message :message="session('message')" />
-        <x-validation-errors :message="session('message')" />
     </x-slot>
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
