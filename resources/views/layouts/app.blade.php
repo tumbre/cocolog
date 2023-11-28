@@ -22,7 +22,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="Zen Maru Gothic bg-first text-fourth antialiased mb-48">
+<body class="Zen Maru Gothic bg-first text-fourth antialiased">
     <div class="min-h-screen">
         @include('layouts.navigation')
 
@@ -41,6 +41,8 @@
         <main>
             {{ $slot }}
         </main>
+
+        @include('layouts.footer')
     </div>
 </body>
 
