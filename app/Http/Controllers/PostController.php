@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Google\Cloud\Language\LanguageClient;
 
 class PostController extends Controller
 {
@@ -79,7 +80,21 @@ class PostController extends Controller
     {
         $user = auth()->user()->id;
         $posts = Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
-        return view('post.show', compact('post'));
+        
+        $projectId = 'cocolog';
+        $language = new LanguageClient([
+            'projectId' => $projectId,
+            'keyFile' => json_decode(file_get_contents(config_path('private/cocolog-406606-16b7e3447327.json')), true)
+        ]);
+
+        # The text to analyze
+        $text = 'やりました！いけましたよ。よろしくおねがいします。';
+
+        # Detects the sentiment of the text
+        $annotation = $language->analyzeSentiment($text);
+        $sentiment = $annotation->sentiment();
+
+        return view('post.show', compact('post', 'text', 'annotation', 'sentiment'));
     }
 
     public function edit(Post $post)
