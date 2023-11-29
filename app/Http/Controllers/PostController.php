@@ -62,7 +62,19 @@ class PostController extends Controller
         $projectId = 'cocolog';
         $language = new LanguageClient([
             'projectId' => $projectId,
-            'keyFile' => json_decode(file_get_contents(config_path('private/cocolog-406606-16b7e3447327.json')), true)
+            'keyFile' => [
+                "type" => env('TYPE'),
+                "project_id" => env('PROJECT_ID'),
+                "private_key_id" => env('PRIVATE_KEY_ID'),
+                "private_key" => env('PRIVATE_KEY'),
+                "client_email" => env('CLIENT_EMAIL'),
+                "client_id" => env('CLIENT_ID'),
+                "auth_uri" => env('AUTH_URI'),
+                "token_uri" => env('TOKEN_URI'),
+                "auth_provider_x509_cert_url" => env('AUTH_PROVIDER_X509_CERT_URL'),
+                "client_x509_cert_url" => env('CLIENT_X509_CERT_URL'),
+                "universe_domain" => env('UNIVERSE_DOMAIN')
+            ]
         ]);
         $text = $inputs['body'].' '.$inputs['body'];
         $annotation = $language->analyzeSentiment($text);
@@ -120,7 +132,19 @@ class PostController extends Controller
         $projectId = 'cocolog';
         $language = new LanguageClient([
             'projectId' => $projectId,
-            'keyFile' => json_decode(file_get_contents(config_path('private/cocolog-406606-16b7e3447327.json')), true)
+            'keyFile' => [
+                "type" => env('TYPE'),
+                "project_id" => env('PROJECT_ID'),
+                "private_key_id" => env('PRIVATE_KEY_ID'),
+                "private_key" => env('PRIVATE_KEY'),
+                "client_email" => env('CLIENT_EMAIL'),
+                "client_id" => env('CLIENT_ID'),
+                "auth_uri" => env('AUTH_URI'),
+                "token_uri" => env('TOKEN_URI'),
+                "auth_provider_x509_cert_url" => env('AUTH_PROVIDER_X509_CERT_URL'),
+                "client_x509_cert_url" => env('CLIENT_X509_CERT_URL'),
+                "universe_domain" => env('UNIVERSE_DOMAIN')
+            ]
         ]);
         $text = $inputs['body'].' '.$inputs['body'];
         $annotation = $language->analyzeSentiment($text);

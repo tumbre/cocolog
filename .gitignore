@@ -19,4 +19,4 @@ yarn-error.log
 /.vscode
 /docker/mysql
 /docker/nginx/logs
-/config/private
+/config/natural_language_api_key.json
