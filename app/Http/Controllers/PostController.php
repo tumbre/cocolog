@@ -126,10 +126,6 @@ class PostController extends Controller
             }
         }
         
-        if (!$request->hasFile('image') && $post->image) {
-            $post->image = null;
-        }
-
         $post->save();
 
         return redirect()->route('post.show', $post)->with('message', '投稿を更新しました');
