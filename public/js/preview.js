@@ -1,11 +1,11 @@
 function showPreview(event) {
     const input = event.target;
 
-    if (input.files && input.files[0]) {
+    if (input.files) {
         const reader = new FileReader();
 
         reader.onload = (e) => {
-            const previewContainer = document.getElementById('image-preview');
+            const previewContainer = document.querySelector('#image-preview');
             previewContainer.innerHTML = '';
 
             const imgContainer = document.createElement('div');
@@ -35,16 +35,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const previewContainer = document.querySelector('#image-preview');
     const existingImage = document.querySelector('#existing-image');
     const removeIcon = document.querySelector('#remove-icon');
-    const input = document.querySelector('#image');
-
-    existingImage.classList.remove('hidden');
 
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('preview-image-wrapper', 'relative');
 
     removeIcon.addEventListener('click', function () {
         previewContainer.innerHTML = '';
-        input.value = '';
     });
 
     imgContainer.appendChild(existingImage);

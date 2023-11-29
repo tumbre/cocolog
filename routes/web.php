@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ChartController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,5 +25,6 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 });
 
 Route::resource('post', PostController::class);
+Route::get('/chart', [ChartController::class, 'index'])->name('chart');
 
 require __DIR__.'/auth.php';

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Google\Cloud\Language\LanguageClient;
 
 class PostController extends Controller
 {
@@ -53,12 +54,29 @@ class PostController extends Controller
         $inputs = $request->validate([
             'title' => 'required | max:255',
             'body' => 'required | max:100000',
-            'image' => 'image | max:10000'
+            'image' => 'image | max:10000',
+            'score' => 'numeric',
+            'magnitude' => 'numeric'
         ]);
+
+        $projectId = 'cocolog';
+        $language = new LanguageClient([
+            'projectId' => $projectId,
+            'keyFile' => json_decode(file_get_contents(config_path('private/cocolog-406606-16b7e3447327.json')), true)
+        ]);
+        $text = $inputs['body'].' '.$inputs['body'];
+        $annotation = $language->analyzeSentiment($text);
+        $sentiment = $annotation->sentiment();
+        $score = $sentiment['score'] * 10;
+        $magnitude = $sentiment['magnitude'] * 10;
+
         $post = new Post();
             $post->title = $inputs['title'];
             $post->body = $inputs['body'];
             $post->user_id = auth()->user()->id;
+            $post->score = $score;
+            $post->magnitude = $magnitude;
+
         if ($request->hasFile('image')) {
             if (app()->isLocal()) {
                 $original = request()->file('image')->getClientOriginalName();
@@ -72,6 +90,7 @@ class PostController extends Controller
             }
         }
         $post->save();
+
         return redirect()->route('post.show', compact('post'))->with('message', '投稿を作成しました');
     }
 
@@ -79,6 +98,7 @@ class PostController extends Controller
     {
         $user = auth()->user()->id;
         $posts = Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+
         return view('post.show', compact('post'));
     }
 
@@ -92,11 +112,26 @@ class PostController extends Controller
         $inputs = $request->validate([
             'title' => 'required | max:255',
             'body' => 'required | max:10000',
-            'image' => 'image | max:10000'
+            'image' => 'image | max:10000',
+            'score' => 'numeric',
+            'magnitude' => 'numeric'
         ]);
+
+        $projectId = 'cocolog';
+        $language = new LanguageClient([
+            'projectId' => $projectId,
+            'keyFile' => json_decode(file_get_contents(config_path('private/cocolog-406606-16b7e3447327.json')), true)
+        ]);
+        $text = $inputs['body'].' '.$inputs['body'];
+        $annotation = $language->analyzeSentiment($text);
+        $sentiment = $annotation->sentiment();
+        $score = $sentiment['score'] * 10;
+        $magnitude = $sentiment['magnitude'] * 10;
 
         $post->title = $inputs['title'];
         $post->body = $inputs['body'];
+        $post->score = $score;
+        $post->magnitude = $magnitude;
 
         if ($request->hasFile('image')) {
             if (app()->isLocal()) {
@@ -110,11 +145,6 @@ class PostController extends Controller
                 $post->image = Storage::disk('s3')->url($path);
             }
         }
-        
-        if (!$request->hasFile('image') && $post->image) {
-            $post->image = null;
-        }
-
         $post->save();
 
         return redirect()->route('post.show', $post)->with('message', '投稿を更新しました');
@@ -123,6 +153,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
 		$post->delete();
+
 		return redirect()->route('post.index')->with('message', '投稿を削除しました');
     }
 }
