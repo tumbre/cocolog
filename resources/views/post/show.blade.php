@@ -36,7 +36,28 @@
                 @endif
                 <p class="mt-4 text-gray-600 py-4 whitespace-pre-line">{{ $post->body }}</p>
                 <div class="text-sm font-semibold flex flex-row-reverse">
-                    <p>{{ $post->user->name }}・{{ $post->created_at->diffForHumans() }}</p>
+                    <p>{{ $post->created_at->isoFormat('YYYY/MM/DD(ddd)') }}・{{ $post->created_at->diffForHumans() }}</p>
+                </div>
+                <div class="mt-20">
+                    <div class="text-end text-xs sm:text-sm">
+                        <div class="flex justify-end text-third items-center ml-36">
+                            <p class="mr-2 sm:mr-4">感情のマグニチュード</p>
+                            <p class="text-end text-base sm:text-lg bg-seventh border border-seventh text-fourth font-bold shadow-lg px-12 sm:px-16 rounded-full">{{ $post->magnitude }}</p>
+                        </div>
+                        <p class="text-end mt-2">ポジティブ・ネガティブを問わず、数値が大きいほど感情的な表現が多い傾向にあります。</p>
+                    </div>
+                    <div class="text-end text-xs sm:text-sm mt-12 sm:mt-20">
+                        <p class="text-end"></p>
+                        <div class="flex justify-end text-third items-center ml-36">
+                            <p class="mr-2 sm:mr-4">感情のクオリティ</p>
+                            @if($post->score > 0)
+                                <p class="text-end text-base sm:text-lg bg-fifth border border-seventh text-white font-bold shadow-lg px-12 sm:px-16 rounded-full">{{ $post->score }}</p>
+                            @else
+                                <p class="text-end text-base sm:text-lg bg-sixth border border-seventh text-white font-bold shadow-lg px-12 sm:px-16 rounded-full">{{ $post->score }}</p>
+                            @endif
+                        </div>
+                        <p class="text-end mt-2">-10~+10の間で、数値が大きいほどポジティブな表現が多い傾向にあります。</p>
+                    </div>
                 </div>
             </div>
         </div>

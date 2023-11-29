@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="mb-12 text-sm">
+<nav x-data="{ open: false }" class="mb-12 sm:mb-24 lg:mb-32 text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <!-- ログイン時 -->
