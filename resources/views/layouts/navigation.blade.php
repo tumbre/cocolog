@@ -7,17 +7,20 @@
                 <a href="/" class="inline-flex items-center gap-2.5 text-2xl text-seventh font-bold md:text-3xl">cocolog</a>
                 <div class="hidden space-x-8 md:ms-10 md:flex text-third">
                     <a href="{{ route('post.index') }}" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
-                        日記を見る
+                        {{ __('Diary index') }}
                     </a>
                     <a href="{{ route('post.create') }}" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
-                        日記を書く
+                        {{ __('Write a diary') }}
+                    </a>
+                    <a href="{{ route('chart') }}" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
+                        {{ __('Psycho Log') }}
                     </a>
                     <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
                         {{ __('Profile') }}
                     </a>
                     @can('admin')
                     <a href="{{ route('profile.index') }}" class="inline-flex items-center px-1 pt-5 pb-2 border-b border-transparent leading-5 hover:text-fourth hover:border-seventh transition duration-300 ease-in-out">
-                        ユーザー一覧
+                        {{ __('User index') }}
                     </a>
                     @endcan
                 </div>
@@ -69,21 +72,24 @@
         @if(Auth::check())
         <div class="pt-2 pb-3 space-y-1">
             <a href="/" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
-                ホーム
+                {{ __('HOME') }}
             </a>
             <a href="{{ route('post.index') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
-                日記を見る
+                {{ __('Diary index') }}
             </a>
             <a href="{{ route('post.create') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
-                日記を書く
+                {{ __('Write a diary') }}
+            </a>
+            <a href="{{ route('chart') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
+                {{ __('Psycho Log') }}
             </a>
             <a href="{{ route('profile.edit') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
                 {{ __('Profile') }}
             </a>
             @can('admin')
-            <a href="{{ route('profile.index') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
-                ユーザー一覧
-            </a>
+                <a href="{{ route('profile.index') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
+                    {{ __('User index') }}
+                </a>
             @endcan
         </div>        
         <div class="pt-4 pb-1 border-t border-gray-200">
