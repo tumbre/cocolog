@@ -7,14 +7,22 @@
 
     <div class="max-w-3xl mx-auto p-6 md:p-8 lg:p-12">
         <div class="w-full space-y-5 md:space-y-8">
-            <div class="flex justify-end mt-4">
-                <a href="{{ route('post.edit', $post) }}"><x-primary-button
-                        class="bg-fifth float-right">編集</x-primary-button></a>
+            <div class="flex justify-end mt-4 space-x-4">
+                <a href="{{ route('post.edit', $post) }}" class="inline-flex items-center px-4 py-2 bg-third border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:scale-105 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    <i class="fa-regular fa-pen-to-square fa-xl md:text-sm md:mr-2 py-1 md:py-0"></i>
+                    <div class="hidden md:block">
+                        <p>Edit</p>
+                    </div>
+                </a>
                 <form method="post" action="{{ route('post.destroy', $post) }}">
                     @csrf
                     @method('delete')
-                    <x-primary-button class="bg-sixth float-right ml-4"
-                        onclick="return confirm('本当に削除しますか？');">削除</x-primary-button>
+                    <button onclick="return confirm('本当に削除しますか？');" class="inline-flex items-center px-4 py-2 bg-sixth border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:scale-105 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                        <i class="fa-regular fa-trash-can fa-xl md:text-sm md:mr-2 py-1 md:py-0"></i>
+                        <a class="hidden md:block">
+                            <p>Delete</p>
+                        </a>
+                    </button>
                 </form>
             </div>
             <div>
