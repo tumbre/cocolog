@@ -22,10 +22,11 @@ class PostController extends Controller
 
     public function index(Request $request)
     {
-        $user = auth()->user()->id;
-        $posts = Post::where('user_id', $user)->orderBy('created_at', 'desc')->paginate(12);
+        $user = auth()->user();
+
+        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(12);
         $search = $request->input('search');
-        $query = Post::where('user_id', $user);
+        $query = Post::where('user_id', $user->id);
 
         if ($search) {
             $spaceConversion = mb_convert_kana($search, 's');
@@ -79,7 +80,12 @@ class PostController extends Controller
         $text = $inputs['body'].' '.$inputs['body'];
         $annotation = $language->analyzeSentiment($text);
         $sentiment = $annotation->sentiment();
-        $score = $sentiment['score'] * 10;
+        # scoreが0だと棒グラフに表示されなくなるため5を代入。チャートでは色を透明にして表示。
+        if ($sentiment['score'] == 0) {
+            $score = 5;
+        } else {
+            $score = $sentiment['score'] * 100;
+        }
         $magnitude = $sentiment['magnitude'] * 10;
 
         $post = new Post();
@@ -108,19 +114,34 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $user = auth()->user()->id;
-        $posts = Post::where('user_id', $user)->orderBy('created_at', 'desc')->get();
+        $user = auth()->user();
 
-        return view('post.show', compact('post'));
+        if ($user->id !== $post->user_id) {
+            return redirect('/');
+        }
+        $previous = Post::where('id', '<', $post->id)->where('user_id', $user->id)->orderBy('id', 'desc')->first();
+        $next = Post::where('id', '>', $post->id)->where('user_id', $user->id)->orderBy('id')->first();
+
+        return view('post.show', compact('post', 'previous', 'next'));
     }
 
     public function edit(Post $post)
     {
+        $user = auth()->user();
+
+        if ($user->id !== $post->user_id) {
+            return redirect('/');
+        }
         return view('post.edit', compact('post'));
     }
 
     public function update(Request $request, Post $post)
     {
+        $user = auth()->user();
+
+        if ($user->id !== $post->user_id) {
+            return redirect('/');
+        }
         $inputs = $request->validate([
             'title' => 'required | max:255',
             'body' => 'required | max:10000',
@@ -149,7 +170,12 @@ class PostController extends Controller
         $text = $inputs['body'].' '.$inputs['body'];
         $annotation = $language->analyzeSentiment($text);
         $sentiment = $annotation->sentiment();
-        $score = $sentiment['score'] * 10;
+        # scoreが0だと棒グラフに表示されなくなるため5を代入。チャートでは色を透明にして表示。
+        if ($sentiment['score'] == 0) {
+            $score = 5;
+        } else {
+            $score = $sentiment['score'] * 100;
+        }
         $magnitude = $sentiment['magnitude'] * 10;
 
         $post->title = $inputs['title'];
@@ -176,6 +202,12 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $user = auth()->user();
+
+        if ($user->id !== $post->user_id) {
+            return redirect('/');
+        }
+        
 		$post->delete();
 
 		return redirect()->route('post.index')->with('message', '投稿を削除しました');
