@@ -4,13 +4,13 @@
     <section class="text-third body-font">
         <div class="container px-5 py-24 mx-auto">
             <x-slot name="header">
-                <h2 class="sm:text-2xl text-lg mb-2 text-fourth">日記を見る</h2>
+                <h2 class="sm:text-2xl text-lg mb-2 text-fourth font-semibold">日記を見る</h2>
             </x-slot>
 
             @include('components.search-form')
 
             @if (count($posts) == 0)
-                <section class="max-w-5xl text-center">
+                <section class="text-center">
                     <p class="mt-4">日記がありません📖<br>こちらから書いてみましょう。<br>
                         <button type="submit"
                             class="py-3 text-center text-sm md:text-base hover:scale-110 transition duration-300">

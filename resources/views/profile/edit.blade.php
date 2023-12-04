@@ -4,7 +4,7 @@
     <section class="text-third body-font">
         <div class="container px-5 py-12 mx-auto">
             <x-slot name="header">
-                <h2 class="sm:text-2xl text-lg mb-2 text-fourth">{{ __('Profile') }}</h2>
+                <h2 class="sm:text-2xl text-lg mb-2 text-fourth font-semibold">{{ __('Profile') }}</h2>
             </x-slot>
 
             <div class="py-12">
