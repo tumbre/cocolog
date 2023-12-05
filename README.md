@@ -9,8 +9,8 @@
 <br>
 ## アプリURL
 #### http://coco6.site  
-メールアドレス : guest@example.com  
-パスワード : password  
+メールアドレス : user@example.com  
+パスワード : guestpass  
 体験用に上記の情報からログインすることができます。
 <br>
 ## 使用技術  
