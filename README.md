@@ -8,7 +8,7 @@
 <img width="1200" src="https://i.gyazo.com/fdfde2f39fa947d9d26a3aee62162b1c.png">
 <br>
 ## アプリURL
-#### https://cocolog-67ffa5d743e2.herokuapp.com/  
+#### http://coco6.site  
 メールアドレス : guest@example.com  
 パスワード : password  
 体験用に上記の情報からログインすることができます。
