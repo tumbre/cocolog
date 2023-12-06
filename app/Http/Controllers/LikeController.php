@@ -3,37 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
-    public function __construct()
+    protected $postService;
+
+    public function __construct(PostService $postService)
     {
         $this->middleware('AuthenticateUser');
         $this->middleware('checkPostOwnership')->only('create', 'destroy');
+        $this->postService = $postService;
     }
 
     public function index(Request $request)
     {
         $user = auth()->user();
-
-        $posts = Post::where('user_id', $user->id)->where('anniversary', true)->orderBy('created_at', 'desc')->paginate(12);
+        $posts = $this->postService->getPostsBySearch($request, $user, true);
         $search = $request->input('search');
-        $query = Post::where('user_id', $user->id);
-
-        if ($search) {
-            $spaceConversion = mb_convert_kana($search, 's');
-            $wordArraySearched = preg_split('/[\s,]+/', $spaceConversion, -1, PREG_SPLIT_NO_EMPTY);
-
-            foreach ($wordArraySearched as $value) {
-                $query->where(function ($query) use ($value) {
-                    $query->orWhere('title', 'like', '%' . $value . '%')
-                        ->orWhere('body', 'like', '%' . $value . '%');
-                });
-            }
-
-            $posts = $query->where('anniversary', true)->orderBy('created_at', 'desc')->paginate(12);
-        }
 
         return view('post.index', compact('user', 'posts', 'search'));
     }
