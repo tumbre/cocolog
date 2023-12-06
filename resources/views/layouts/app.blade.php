@@ -16,8 +16,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">    
-    <style>body { font-family: 'Zen Maru Gothic', serif; }</style>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">    
+    <style>body { font-family: 'Zen Kaku Gothic New', sans-serif; }</style>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -25,7 +25,7 @@
     <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.0/Chart.bundle.js" integrity="sha512-Q9b0myMAI+IqHh5ldQJTh3ZXkVHwlcVF+H6+LF/QU3n0XmQp7w/kjapf+I3os0GhvJcZXCr5dAhhs5AbiZafwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body class="Zen Maru Gothic bg-first text-fourth antialiased">
+<body class="Zen Kaku Gothic New bg-first text-fourth antialiased">
     <div class="min-h-screen">
         @include('layouts.navigation')
 

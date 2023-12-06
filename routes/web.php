@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\LikeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,5 +27,8 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 
 Route::resource('post', PostController::class);
 Route::get('/chart', [ChartController::class, 'index'])->name('chart');
+Route::get('likes', [LikeController::class, 'index'])->name('likes');
+Route::post('like/{post}', [LikeController::class, 'create'])->name('like');
+Route::delete('unlike/{post}', [LikeController::class, 'destroy'])->name('unlike');
 
 require __DIR__.'/auth.php';
