@@ -8,22 +8,7 @@
     <div class="max-w-3xl mx-auto p-6 md:p-8 lg:p-12">
         <div class="w-full space-y-5 md:space-y-12">
             <div class="text-sm font-semibold flex justify-between items-center">
-                @if ($post->anniversary == true)
-                    <form method="post" action="{{ route('unlike', ['post' => $post]) }}">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="toggle_wish mr-auto text-lg">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </form>
-                @else
-                    <form method="post" action="{{ route('like', ['post' => $post]) }}">
-                        @csrf
-                        <button type="submit" class="toggle_wish mr-auto text-lg">
-                            <i class="far fa-heart"></i>
-                        </button>
-                    </form>
-                @endif
+                @include($post->anniversary ? 'components.likes.unlike-button' : 'components.likes.like-button')
                 <p class="text-sm sm:text-base">{{ $post->created_at->isoFormat('YYYY/MM/DD(ddd)') }}</p>
             </div>
             <div class="flex justify-end space-x-4">

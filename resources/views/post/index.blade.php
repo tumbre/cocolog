@@ -41,22 +41,7 @@
                                     <p class="flex-grow leading-relaxed text-base mb-8">
                                         {{ Str::limit($post->body, 100, '...') }}</p>
                                     <div class="text-sm font-semibold flex justify-between items-center">
-                                        @if ($post->anniversary == true)
-                                            <form method="post" action="{{ route('unlike', ['post' => $post]) }}">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="toggle_wish mr-auto">
-                                                    <i class="fas fa-heart"></i>
-                                                </button>
-                                            </form>
-                                        @else
-                                            <form method="post" action="{{ route('like', ['post' => $post]) }}">
-                                                @csrf
-                                                <button type="submit" class="toggle_wish mr-auto">
-                                                    <i class="far fa-heart"></i>
-                                                </button>
-                                            </form>
-                                        @endif
+                                        @include($post->anniversary ? 'components.likes.unlike-button' : 'components.likes.like-button')
                                         <p>{{ $post->created_at->isoFormat('YYYY/MM/DD(ddd)') }}・{{ $post->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>

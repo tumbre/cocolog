@@ -17,8 +17,6 @@ class LikeController extends Controller
 
         $post->anniversary = true;
         $post->save();
-
-        return back();
     }
 
     public function destroy(Post $post)
@@ -31,7 +29,5 @@ class LikeController extends Controller
 
         $post->anniversary = false;
         $post->save();
-
-        return back();
     }
 }
