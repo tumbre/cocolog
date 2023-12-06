@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
+    public function index()
+    {
+        
+    }
+
     public function create(Post $post)
     {
         $user = auth()->user();

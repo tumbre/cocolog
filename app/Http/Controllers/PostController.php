@@ -11,13 +11,8 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
-            if (!auth()->check()) {
-                return redirect('/login')->with('message', 'ログインしてください');
-            }
-
-            return $next($request);
-        });
+        $this->middleware('AuthenticateUser');
+        $this->middleware('checkPostOwnership')->only('show', 'edit', 'update', 'destroy');
     }
 
     public function index(Request $request)
@@ -115,10 +110,6 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $user = auth()->user();
-
-        if ($user->id !== $post->user_id) {
-            return redirect('/');
-        }
         $previous = Post::where('id', '<', $post->id)->where('user_id', $user->id)->orderBy('id', 'desc')->first();
         $next = Post::where('id', '>', $post->id)->where('user_id', $user->id)->orderBy('id')->first();
 
@@ -127,21 +118,12 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $user = auth()->user();
-
-        if ($user->id !== $post->user_id) {
-            return redirect('/');
-        }
         return view('post.edit', compact('post'));
     }
 
     public function update(Request $request, Post $post)
     {
         $user = auth()->user();
-
-        if ($user->id !== $post->user_id) {
-            return redirect('/');
-        }
         $inputs = $request->validate([
             'title' => 'required | max:255',
             'body' => 'required | max:10000',
@@ -202,14 +184,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        $user = auth()->user();
-
-        if ($user->id !== $post->user_id) {
-            return redirect('/');
-        }
-        
 		$post->delete();
-
 		return redirect()->route('post.index')->with('message', '投稿を削除しました');
     }
 }
