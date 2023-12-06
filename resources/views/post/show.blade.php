@@ -5,7 +5,7 @@
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth font-semibold">{{ $post->title }}</h2>
     </x-slot>
 
-    <div class="max-w-3xl mx-auto p-6 md:p-8 lg:p-12">
+    <div class="max-w-3xl mx-auto p-6 md:p-8 lg:p-12 mb-40">
         <div class="w-full space-y-5 md:space-y-12">
             <div class="text-sm font-semibold flex justify-between items-center">
                 @include($post->anniversary ? 'components.likes.unlike-button' : 'components.likes.like-button')

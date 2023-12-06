@@ -22,7 +22,12 @@ export default {
                 fifth: '#173260',
                 sixth: '#eb6038',
                 seventh: '#c1a26c'
-            }
+            },
+            width: {
+                '128': '32rem',
+                '144': '36rem',
+                '160': '40rem',
+            },
         },
     },
 

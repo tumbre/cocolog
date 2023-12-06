@@ -32,7 +32,7 @@
         <!-- Page Heading -->
         @if (isset($header))
             <header>
-                <div class="flex flex-wrap px-6 sm:px-12 mb-6 flex-col items-center text-center">
+                <div class="flex flex-wrap mt-12 sm:mt-24 lg:mt-32 px-6 sm:px-12 flex-col items-center text-center">
                     <x-message :message="session('message')" />
                     <x-validation-errors :message="session('message')" />
                     {{ $header }}

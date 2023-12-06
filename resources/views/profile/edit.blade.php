@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <section class="text-third body-font">
-        <div class="container px-5 py-12 mx-auto">
+        <div class="container px-5 py-12 mx-auto mb-40">
             <x-slot name="header">
                 <h2 class="sm:text-2xl text-lg mb-2 text-fourth font-semibold">{{ __('Profile') }}</h2>
             </x-slot>

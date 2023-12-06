@@ -1,33 +1,35 @@
 <x-app-layout>
-    <x-slot name="header">
-    </x-slot>
-    <div class="pb-6 sm:pb-8 lg:pb-12">
-        <div class="mx-auto max-w-screen-2xl px-8 md:px-20">
-            <section class="flex flex-col justify-center items-center gap-6 sm:gap-10 md:gap-16 lg:flex-row lg:items-end">
-                <div class="flex flex-col justify-center text-center lg:py-12 lg:text-left xl:w-6/12 xl:py-20">
-                    <div class="block lg:hidden">
-                        <img src="{{ asset('logo/thinking.png') }}" loading="lazy" alt="Thinking man" class="mix-blend-multiply h-36 text-center mx-auto">
-                    </div>
-                    <p class="mb-4 font-semibold text-third md:mb-6 md:text-lg xl:text-xl">Let out everything that comes to your mind.</p>
-                    <h1 class="mb-8 text-5xl md:text-6xl xl:text-7xl md:mb-12">こころ＋ログ。</h1>
-                    <p class="mb-8 leading-loose xl:leading-loose text-third md:mb-12 lg:w-4/5 xl:text-lg">cocologはこころのログを取るサービスです。<br>私たちは自分が思っているよりも自分のことを知りません。<br>気が付いたら同じところをぐるぐる回っていた、！なんてこともあるかもしれません。<br><br>cocologは、そんな状況を客観視する機会を提供します。<br>客観視することで、思考のループから抜け出すことができます。<br>ループから抜け出せれば、軽やかに行動できます。<br><br>今日の一日はどんな日でしたか？<br>まずは一行だけ、こころの言葉をアウトプットしてみましょう。</p>
-                    @if(Auth::check())
-                        <a href="{{ route('post.create') }}" class="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:justify-start">
-                    @else
-                    <a href="{{ route('login') }}" class="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:justify-start">
-                    @endif
-                        <button type="submit" class="rounded-full bg-fifth px-8 py-3 text-center text-sm md:text-base text-white hover:scale-105 hover:shadow-lg transition duration-300">
-                            <div class="flex items-center justify-center">
-                                <i class="fa-solid fa-pen-fancy"></i>
-                                <p class="ml-2">Start now</p>
-                            </div>
-                        </button>
+    <div class="flex flex-wrap px-6 sm:px-12 flex-col items-center text-center">
+        <x-message :message="session('message')" />
+        <x-validation-errors :message="session('message')" />
+    </div>
+    <div id="heading" class="flex flex-col md:flex-row items-center bg-third text-white">
+        <div class="w-full md:w-144 px-4 lg:ml-20 py-8 text-center md:text-start">
+            <h1 class="text-4xl md:text-6xl font-light">cocolog</h1>
+            <div class="relative my-8">
+                <p class="text-second mb-12">Let out everything that comes to your mind.
+                </p>
+                @if(Auth::check())
+                    <a href="{{ route('post.create') }}"
+                        class="items-center justify-center w-full px-32 lg:px-8 py-2.5 w-full text-sm text-center text-white bg-black hover:drop-shadow-lg duration-200 border-2 border-black rounded-full nline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none w-auto focus-visible:outline-black focus-visible:ring-black">
+                        Start now
                     </a>
-                </div>
-                <div class="hidden lg:block">
-                    <img src="{{ asset('logo/thinking.png') }}" loading="lazy" alt="Thinking man" class="mix-blend-multiply h-96 object-cover object-center lg:mb-24">
-                </div>
-            </section>
+                @else
+                    <a href="{{ route('login') }}"
+                        class="items-center justify-center w-full px-32 lg:px-8 py-2.5 w-full text-sm text-center text-white bg-black hover:drop-shadow-lg duration-200 border-2 border-black rounded-full nline-flex hover:bg-transparent hover:border-black hover:text-black focus:outline-none w-auto focus-visible:outline-black focus-visible:ring-black">
+                        Start now
+                    </a>
+                @endif
+            </div>
+        </div>
+        <div class="w-full md:w-3/4 h-96 md:h-screen relative">
+            <img src="{{ asset('errors/naoshima.jpg') }}" alt=""
+                class="absolute inset-0 object-cover object-top h-full w-full">
         </div>
     </div>
+    <div class="px-12 py-20 md:py-40 leading-loose md:leading-loose bg-first text-center text-sm md:text-base">
+        <p>cocologは日記記録サービスです。<br>日記をつけることでこころのログが算出され、客観的にメンタルヘルスを把握したり、<br>主観的に記念日を設定したりするすることができます。<br><br><br>今日の一日はどんな日でしたか？<br>こころの言葉をアウトプットしてみましょう。
+        </p>
+    </div>
+
 </x-app-layout>

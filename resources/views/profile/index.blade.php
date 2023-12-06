@@ -3,7 +3,7 @@
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth font-semibold">ユーザー一覧</h2>
     </x-slot>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto mb-40 px-4 sm:px-6 lg:px-8">
         <div class="my-6">
             <table class="text-left w-full border-collapse mt-8"> 
                 <tr class="bg-second">
