@@ -23,7 +23,7 @@
                 <div class="flex flex-wrap -m-4">
                     @foreach ($posts as $post)
                         <section class="xl:w-1/3 md:w-1/2 w-full p-4">
-                            <a href="{{ route('post.show', $post) }}" class="w-full">
+                            <a href="{{ route('post.show', $post) }}">
                                 <div class="bg-white w-full rounded-lg p-6 flex flex-col h-full hover:shadow-md transition duration-300">
                                     <h2 class="text-lg text-third font-bold mt-4 mb-1">{{ $post->title }}</h2>
                                     <hr class="w-full mb-8">
@@ -40,7 +40,23 @@
                                     </div>
                                     <p class="flex-grow leading-relaxed text-base mb-8">
                                         {{ Str::limit($post->body, 100, '...') }}</p>
-                                    <div class="text-sm font-semibold flex flex-row-reverse">
+                                    <div class="text-sm font-semibold flex justify-between items-center">
+                                        @if ($post->anniversary == true)
+                                            <form method="post" action="{{ route('unlike', ['post' => $post]) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="toggle_wish mr-auto">
+                                                    <i class="fas fa-heart"></i>
+                                                </button>
+                                            </form>
+                                        @else
+                                            <form method="post" action="{{ route('like', ['post' => $post]) }}">
+                                                @csrf
+                                                <button type="submit" class="toggle_wish mr-auto">
+                                                    <i class="far fa-heart"></i>
+                                                </button>
+                                            </form>
+                                        @endif
                                         <p>{{ $post->created_at->isoFormat('YYYY/MM/DD(ddd)') }}・{{ $post->created_at->diffForHumans() }}</p>
                                     </div>
                                 </div>

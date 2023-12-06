@@ -42,7 +42,7 @@ class PostController extends Controller
             $posts = $query->orderBy('created_at', 'desc')->paginate(12);
         }
 
-        return view('post.index', compact('posts', 'search'));
+        return view('post.index', compact('user', 'posts', 'search'));
     }
 
     public function create()
@@ -122,7 +122,7 @@ class PostController extends Controller
         $previous = Post::where('id', '<', $post->id)->where('user_id', $user->id)->orderBy('id', 'desc')->first();
         $next = Post::where('id', '>', $post->id)->where('user_id', $user->id)->orderBy('id')->first();
 
-        return view('post.show', compact('post', 'previous', 'next'));
+        return view('post.show', compact('user', 'post', 'previous', 'next'));
     }
 
     public function edit(Post $post)
