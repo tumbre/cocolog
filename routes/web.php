@@ -27,6 +27,7 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 
 Route::resource('post', PostController::class);
 Route::get('/chart', [ChartController::class, 'index'])->name('chart');
+Route::get('likes', [LikeController::class, 'index'])->name('likes');
 Route::post('like/{post}', [LikeController::class, 'create'])->name('like');
 Route::delete('unlike/{post}', [LikeController::class, 'destroy'])->name('unlike');
 

@@ -74,7 +74,7 @@
             <!-- ログアウト時 -->
             @else
             <div class="flex items-center">
-                <a href="/" class="inline-flex items-center gap-2.5 text-2xl text-seventh font-bold md:text-3xl">cocolog</a>
+                <a href="/" class="inline-flex items-center font-semibold text-2xl mb-4">cocolog</a>
             </div>
             <div class="flex items-center ms-6">
                 <div class="block ml-auto">
