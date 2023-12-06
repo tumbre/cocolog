@@ -28,7 +28,7 @@
             </div>
             <div class="flex justify-end space-x-4">
                 <a href="{{ route('post.edit', $post) }}"
-                    class="inline-flex items-center px-4 py-2 bg-third border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:scale-105 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    class="inline-flex items-center px-4 py-2 bg-third border border-transparent font-semibold text-xs text-white uppercase tracking-widest hover:scale-105 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
                     <i class="fa-regular fa-pen-to-square fa-xl md:text-sm md:mr-2 py-1 md:py-0"></i>
                     <div class="hidden md:block">
                         <p>Edit</p>
@@ -38,7 +38,7 @@
                     @csrf
                     @method('delete')
                     <button onclick="return confirm('本当に削除しますか？');"
-                        class="inline-flex items-center px-4 py-2 bg-sixth border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:scale-105 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                        class="inline-flex items-center px-4 py-2 bg-sixth border border-transparent font-semibold text-xs text-white uppercase tracking-widest hover:scale-105 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
                         <i class="fa-regular fa-trash-can fa-xl md:text-sm md:mr-2 py-1 md:py-0"></i>
                         <a class="hidden md:block">
                             <p>Delete</p>
@@ -50,9 +50,9 @@
                 @if ($post->image)
                     @if (app()->isLocal())
                         <img src="{{ asset('storage/images/' . $post->image) }}"
-                            class="w-full mx-auto rounded-lg mb-2";>
+                            class="w-full mx-auto mb-2";>
                     @else
-                        <img src="{{ $post->image }}" class="w-full mx-auto rounded-lg mb-2">
+                        <img src="{{ $post->image }}" class="w-full mx-auto mb-2">
                     @endif
                 @endif
                 <p class="mt-4 py-4 text-third text-base md:text-lg leading-loose md:leading-loose whitespace-pre-line">
@@ -86,7 +86,7 @@
                         <div class="flex justify-end text-third items-center ml-36">
                             <p class="mr-2 sm:mr-4">感情のマグニチュード</p>
                             <a href="{{ route('chart') }}"
-                                class="text-end text-base sm:text-lg bg-seventh border border-seventh text-fourth font-semibold hover:shadow-lg hover:scale-105 transition ease-in-out duration-300 px-12 sm:px-16 rounded-full">{{ $post->magnitude }}</a>
+                                class="text-end text-base sm:text-lg bg-seventh border border-seventh text-fourth font-semibold hover:shadow-lg hover:scale-105 transition ease-in-out duration-300 px-12 sm:px-16">{{ $post->magnitude }}</a>
                         </div>
                         <div class="flex justify-end text-third items-center ml-20 sm:ml-0 mt-1">
                             <i class="fas fa-question-circle  text-xl sm:text-2xl mr-1"></i>
@@ -98,11 +98,11 @@
                         <div class="flex justify-end text-third items-center ml-36">
                             <p class="mr-2 sm:mr-4">感情のクオリティ</p>
                             @if ($post->score == 5)
-                                <a href="/chart#score_chart" class="text-end text-base sm:text-lg bg-second border border-seventh text-white font-semibold hover:shadow-lg hover:scale-105 transition ease-in-out duration-300 px-12 sm:px-16 rounded-full">0</a>
+                                <a href="/chart#score_chart" class="text-end text-base sm:text-lg bg-second border border-seventh text-white font-semibold hover:shadow-lg hover:scale-105 transition ease-in-out duration-300 px-12 sm:px-16">0</a>
                             @elseif($post->score > 0)
-                                <a href="/chart#score_chart" class="text-end text-base sm:text-lg bg-fifth border border-seventh text-white font-semibold hover:shadow-lg hover:scale-105 transition ease-in-out duration-300 px-12 sm:px-16 rounded-full">{{ $post->score / 10 }}</a>
+                                <a href="/chart#score_chart" class="text-end text-base sm:text-lg bg-fifth border border-seventh text-white font-semibold hover:shadow-lg hover:scale-105 transition ease-in-out duration-300 px-12 sm:px-16">{{ $post->score / 10 }}</a>
                             @else
-                                <a href="/chart#score_chart" class="text-end text-base sm:text-lg bg-sixth border border-seventh text-white font-semibold hover:shadow-lg hover:scale-105 transition ease-in-out duration-300 px-12 sm:px-16 rounded-full">{{ $post->score / 10 }}</a>
+                                <a href="/chart#score_chart" class="text-end text-base sm:text-lg bg-sixth border border-seventh text-white font-semibold hover:shadow-lg hover:scale-105 transition ease-in-out duration-300 px-12 sm:px-16">{{ $post->score / 10 }}</a>
                             @endif
                         </div>
                         <div class="flex justify-end text-third items-center ml-20 sm:ml-0 mt-1">

@@ -7,7 +7,7 @@
             <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
         @endif
                 @csrf
-                <div class="md:flex items-center mt-8">
+                <div class="md:flex items-center my-8">
                     <div class="w-full flex flex-col">
                         <label for="title" class="font-semibold leading-none mt-6 mb-2">タイトル</label>
                         <input type="text" name="title"
@@ -29,12 +29,12 @@
                         id="body">@if(isset($post)){{ old('body', $post->body) }}@else{{ old('body') }}@endif</textarea>
                 </div>
 
-                <div class="mt-8 mb-20">
+                <div class="mt-16 mb-20">
                     @include('components.preview')
                 </div>
 
                 <button type="submit"
-                    class="my-12 w-full bg-fifth text-white rounded-full border border-seventh cursor-pointer hover:shadow-lg transition duration-300 ease-in-out">
+                    class="my-12 w-full bg-fifth text-white text-sm md:text-base rounded-full border border-seventh cursor-pointer hover:shadow-lg transition duration-300 ease-in-out">
                     <div class="flex items-center justify-center">
                         <i class="fa-solid fa-pen-fancy"></i>
                         <p class="ml-2">記録する</p>

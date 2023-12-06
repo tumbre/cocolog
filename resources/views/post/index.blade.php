@@ -24,17 +24,17 @@
                     @foreach ($posts as $post)
                         <section class="xl:w-1/3 md:w-1/2 w-full p-4">
                             <a href="{{ route('post.show', $post) }}">
-                                <div class="bg-white w-full rounded-lg p-6 flex flex-col h-full hover:shadow-md transition duration-300">
+                                <div class="bg-white w-full p-6 flex flex-col h-full hover:shadow-md transition duration-300">
                                     <h2 class="text-lg text-third font-bold mt-4 mb-1">{{ $post->title }}</h2>
                                     <hr class="w-full mb-8">
                                     <div class="mb-4">
                                         @if ($post->image)
                                             @if (app()->isLocal())
                                                 <img src="{{ asset('storage/images/' . $post->image) }}"
-                                                    class="h-52 rounded w-full object-cover object-center mb-6";>
+                                                    class="h-52 w-full object-cover object-center mb-6";>
                                             @else
                                                 <img src="{{ $post->image }}"
-                                                    class="h-52 rounded w-full object-cover object-center mb-6">
+                                                    class="h-52 w-full object-cover object-center mb-6">
                                             @endif
                                         @endif
                                     </div>

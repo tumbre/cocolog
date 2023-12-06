@@ -5,5 +5,5 @@
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth font-semibold">「{{ $post->title }}」を編集</h2>
     </x-slot>
 
-    @include('components.post_form');
+    @include('components.post-form');
 </x-app-layout>
