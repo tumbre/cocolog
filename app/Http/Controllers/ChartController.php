@@ -10,27 +10,27 @@ class ChartController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
-            if (!auth()->check()) {
-                return redirect('/login')->with('message', 'ログインしてください');
-            }
-
-            return $next($request);
-        });
+        $this->middleware('AuthenticateUser');
     }
-    
-    public function index()
+
+    public function index(Request $request)
     {
         $user = auth()->user();
-        $scores = array_map(fn($score) => $score / 10, Post::where('user_id', $user->id)->pluck('score')->toArray());
-        $indexes = Post::where('user_id', $user->id)->pluck('id');
-        $magnitude = Post::where('user_id', $user->id)->pluck('magnitude');
-        $titles = Post::where('user_id', $user->id)->pluck('title');
-        $dates = Post::where('user_id', $user->id)->pluck('created_at');
-        $formattedDates = $dates->map(function ($date) {
+        $numberOfDays = $request->input('numberOfDays', 30);
+
+        $latestPosts = Post::where('user_id', $user->id)
+            ->where('created_at', '>=', Carbon::now()->subDays($numberOfDays))
+            ->orderBy('created_at')
+            ->get();
+
+        $scores = $latestPosts->pluck('score')->map(fn($score) => $score / 10);
+        $indexes = $latestPosts->pluck('id');
+        $magnitude = $latestPosts->pluck('magnitude');
+        $titles = $latestPosts->pluck('title');
+        $formattedDates = $latestPosts->pluck('created_at')->map(function ($date) {
             return Carbon::parse($date)->format('n/j');
         });
-        
-        return view('chart', compact('scores', 'indexes', 'magnitude', 'titles', 'formattedDates'));
+
+        return view('chart', compact('scores', 'indexes', 'magnitude', 'titles', 'formattedDates', 'numberOfDays'));
     }
 }

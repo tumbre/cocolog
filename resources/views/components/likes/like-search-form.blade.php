@@ -1,6 +1,6 @@
 @section('title', '記念日の日記')
 
-<div class="w-full bg-third py-12 px-6">
+<div class="w-full bg-third py-12 px-6 mb-4">
     <div class="relative flex w-full">
         <nav class="items-center flex-grow pb-0 flex justify-end">
             <a class="px-2 py-2 text-sm text-gray-500 px-6 px-3 hover:text-blue-600 ml-auto" href="#"></a>

@@ -1,10 +1,10 @@
-<nav x-data="{ open: false }" class="mb-12 sm:mb-24 lg:mb-32 text-fourth text-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav x-data="{ open: false }" class="my-1 text-fourth text-sm">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between">
             <!-- ログイン時 -->
             @if(Auth::check())
             <div class="flex items-center">
-                <a href="/" class="inline-flex items-center font-semibold text-2xl mb-4">cocolog</a>
+                <a href="/" class="inline-flex items-center font-semibold text-2xl mb-2">cocolog</a>
                 <div class="hidden space-x-8 md:ms-10 md:flex">
                     <a href="{{ route('post.index') }}" class="inline-flex items-center px-1 pt-2 pb-3 border-b border-transparent leading-5 hover:border-seventh transition duration-300 ease-in-out">
                         {{ __('Diary index') }}
@@ -27,7 +27,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
-                                class="inline-flex items-center px-4 pt-1 pb-2 font-semibold text-fourth bg-seventh hover:scale-105 focus:outline-none transition ease-in-out duration-200">
+                                class="inline-flex items-center px-4 pt-1 pb-2 text-white bg-sixth rounded-full hover:scale-105 focus:outline-none transition ease-in-out duration-200">
                                 <div>
                                     {{ Auth::user()->name }}
                                 </div>
@@ -74,7 +74,7 @@
             <!-- ログアウト時 -->
             @else
             <div class="flex items-center">
-                <a href="/" class="inline-flex items-center font-semibold text-2xl mb-4">cocolog</a>
+                <a href="/" class="inline-flex items-center font-semibold text-2xl mb-2">cocolog</a>
             </div>
             <div class="flex items-center ms-6">
                 <div class="block ml-auto">

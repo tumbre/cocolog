@@ -1,6 +1,6 @@
 <x-app-layout>
     <section class="text-third body-font">
-        <div class="container px-5 my-12 sm:py-16 mx-auto">
+        <div class="container px-5 mt-12 mb-40 sm:py-16 mx-auto">
             @if( Request::routeIs('post.index'))
                 <x-slot name="header">
                     <h2 class="sm:text-2xl text-lg mb-2 text-fourth font-semibold">すべての日記</h2>

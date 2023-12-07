@@ -4,12 +4,20 @@
     <x-slot name="header">
         <h2 class="sm:text-2xl text-lg mb-2 text-fourth font-semibold">{{ __('Psycho Log') }}</h2>
     </x-slot>
-    <div class="max-w-7xl mx-auto p-6 md:p-8 lg:p-12 space-y-20 sm:space-y-36">
-        <div class="w-full space-y-5 md:space-y-8 mt-12">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 text-xs sm:text-sm text-center pt-8 px-4">
+        <button id="7" class="text-fourth border border-fourth rounded-full pb-1 m-2" onclick="changeNumberOfDays(7)">Last 7</button>
+        <button id="30" class="text-fourth border border-fourth rounded-full pb-1 m-2" onclick="changeNumberOfDays(30)">Last 30</button>
+        <button id="180" class="text-fourth border border-fourth rounded-full pb-1 m-2" onclick="changeNumberOfDays(180)">Last 180</button>
+        <button id="365" class="text-fourth border border-fourth rounded-full pb-1 m-2" onclick="changeNumberOfDays(365)">Last 365</button>
+    </div>
+    <div class="max-w-7xl mx-auto mb-40 p-6 md:p-8 lg:p-12 space-y-20 sm:space-y-36">
+        <div class="w-full space-y-5 md:space-y-8 mt-6 sm:mt-12">
             <div class="justify-end mt-4">
                 <h2 class="text-center text-md md:text-lg mb-6">感情のマグニチュード</h2>
                 <div class="flex justify-end text-third items-center mr-4">
-                    <p class="bg-seventh bg-opacity-25 text-seventh text-opacity-0 border border-seventh border-opacity-100 text-xs">◯◯◯◯</p>
+                    <p
+                        class="bg-seventh bg-opacity-25 text-seventh text-opacity-0 border border-seventh border-opacity-100 text-xs">
+                        ◯◯◯◯</p>
                     <p class="ml-1 text-end text-xs">感情的なアウトプットの量</p>
                 </div>
                 <canvas id="magnitude_chart"></canvas>
@@ -25,9 +33,9 @@
                 <h2 class="text-center text-md md:text-lg mb-6">感情のクオリティ</h2>
                 <div class="flex justify-end text-third items-center mr-4">
                     <p class="bg-fifth opacity-25 text-fifth text-xs">◯◯◯◯</p>
-                    <p class="ml-1 mr-6 text-end text-xs">ポジティブ指数</p>
+                    <p class="ml-1 mr-6 text-end text-xs">ポジティブ傾向</p>
                     <p class="bg-sixth opacity-25 text-sixth text-xs">◯◯◯◯</p>
-                    <p class="ml-1 text-end text-xs">ネガティブ指数</p>
+                    <p class="ml-1 text-end text-xs">ネガティブ傾向</p>
                 </div>
                 <div><canvas id="score_chart"></canvas></div>
                 <div class="flex justify-end text-third items-center ml-36 mt-2">
@@ -90,6 +98,27 @@
             datasets: datasets,
         },
         @include('components.chart_options')
+    });
+
+    // 表示期間の切り替え
+    const changeNumberOfDays = (paramValue) => {
+        const newUrlParams = new URLSearchParams(window.location.search);
+        newUrlParams.set('numberOfDays', paramValue);
+        history.replaceState(null, null, `?${newUrlParams.toString()}`);
+        location.reload();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedButtonId = urlParams.get('numberOfDays');
+        const selectedButton = document.getElementById(selectedButtonId)
+        if (selectedButton) {
+            selectedButton.classList.add('bg-fifth');
+            selectedButton.classList.add('text-white');
+        } else {
+            document.getElementById(30).classList.add('bg-fifth');
+            document.getElementById(30).classList.add('text-white');
+        }
     });
 </script>
 
