@@ -6,9 +6,9 @@
 <img width="1200" src="https://i.gyazo.com/78ef139660ad2a18b5cd71f050da17a7.jpg">
 <img width="1200" src="https://i.gyazo.com/8c6cab4da6660ff54327389def056301.png">
 <img width="1200" src="https://i.gyazo.com/2a967bb03f1b80edb15fdc5e0f69a76c.png">
-<img width="300" src="https://i.gyazo.com/60db8a1abd88e89a4e01645fc7502edd.png">
-<img width="300" src="https://i.gyazo.com/1c9d99853eeb729785f6102e36e9b2c1.png">
-<img width="300" src="https://i.gyazo.com/6dd480cdbf4ee0ad094221bea9ad0124.png">
+<img width="280" src="https://i.gyazo.com/60db8a1abd88e89a4e01645fc7502edd.png">
+<img width="280" src="https://i.gyazo.com/1c9d99853eeb729785f6102e36e9b2c1.png">
+<img width="280" src="https://i.gyazo.com/6dd480cdbf4ee0ad094221bea9ad0124.png">
 <br><br>
 ## アプリURL
 #### https://coco6.site  
