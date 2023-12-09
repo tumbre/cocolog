@@ -5,7 +5,7 @@
     </div>
     <div id="heading" class="flex flex-col md:flex-row items-center bg-third text-white">
         <div class="w-full md:w-144 px-4 lg:ml-20 py-8 text-center md:text-start">
-            <h1 class="text-4xl md:text-6xl font-light">cocolog</h1>
+            <h1 class="text-4xl md:text-6xl font-light">こころ＋ログ。</h1>
             <div class="relative my-8">
                 <p class="text-second mb-12">Let out everything that comes to your mind.
                 </p>
