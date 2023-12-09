@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         eventDidMount: function(info) {
             if (info.event.start.getMonth() !== calendar.view.currentStart.getMonth()) {
-                info.el.style.opacity = '0.4';
+                info.el.style.opacity = '0.15';
             }
         },
     });
