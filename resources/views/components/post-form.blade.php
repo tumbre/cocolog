@@ -62,11 +62,13 @@
 @if (!isset($errors) || count($errors) === 0)
     <script>
         window.onload = function () {
-            let today = new Date();
-            today.setDate(today.getDate());
+            const created_at_param = new URLSearchParams(window.location.search).get('created_at');
+            let today = created_at_param ? new Date(created_at_param) : new Date();
+
             let yyyy = today.getFullYear();
             let mm = ("0" + (today.getMonth() + 1)).slice(-2);
             let dd = ("0" + today.getDate()).slice(-2);
+
             document.getElementById("today").value = yyyy + '-' + mm + '-' + dd;
         }
     </script>
