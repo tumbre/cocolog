@@ -29,11 +29,6 @@ class LikeController extends Controller
     public function create(Post $post)
     {
         $user = auth()->user();
-
-        if ($user->id !== $post->user_id) {
-            return redirect('/');
-        }
-
         $post->anniversary = true;
         $post->save();
     }
@@ -41,11 +36,6 @@ class LikeController extends Controller
     public function destroy(Post $post)
     {
         $user = auth()->user();
-
-        if ($user->id !== $post->user_id) {
-            return redirect('/');
-        }
-
         $post->anniversary = false;
         $post->save();
     }

@@ -15,6 +15,9 @@
                     <a href="{{ route('chart') }}" class="inline-flex items-center px-1 pt-2 pb-3 border-b border-transparent leading-5 hover:border-seventh transition duration-300 ease-in-out">
                         {{ __('Psycho Log') }}
                     </a>
+                    <a href="{{ route('calendar') }}" class="inline-flex items-center px-1 pt-2 pb-3 border-b border-transparent leading-5 hover:border-seventh transition duration-300 ease-in-out">
+                        {{ __('Calendar') }}
+                    </a>
                     @can('admin')
                     <a href="{{ route('profile.index') }}" class="inline-flex items-center px-1 border-b border-transparent leading-5 hover:border-seventh transition duration-300 ease-in-out">
                         {{ __('User index') }}
@@ -103,6 +106,9 @@
             </a>
             <a href="{{ route('chart') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
                 {{ __('Psycho Log') }}
+            </a>
+            <a href="{{ route('calendar') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">
+                {{ __('Calendar') }}
             </a>
             @can('admin')
                 <a href="{{ route('profile.index') }}" class="block w-full ps-3 pe-4 py-2 border-r-4 border-b-2 border-transparent text-end text-fourth hover:text-fourth hover:border-seventh focus:outline-none focus:text-fourth transition duration-200 ease-in-out">

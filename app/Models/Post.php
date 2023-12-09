@@ -13,6 +13,8 @@ class Post extends Model
         'body',
         'user_id',
         'image',
+        'created_at',
+        'updated_at'
     ];
 
     public function user() {
