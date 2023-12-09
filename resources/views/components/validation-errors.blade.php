@@ -12,7 +12,7 @@
       @endforeach
 
       @if (empty($errors->first('image')))
-        <li>写真は再度選択してください。</li>
+        <li>写真を選択していた場合は再度選択してください。</li>
       @endif
     </ul>
   </div>

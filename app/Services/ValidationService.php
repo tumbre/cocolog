@@ -13,6 +13,7 @@ class ValidationService
             'title' => 'required|max:255',
             'body' => 'required|max:100000',
             'image' => 'image|max:1000',
+            'created_at' => 'date',
             'score' => 'numeric',
             'magnitude' => 'numeric',
         ]);
