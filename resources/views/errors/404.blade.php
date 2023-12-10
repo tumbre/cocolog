@@ -51,7 +51,7 @@
             </div>
             <div class="relative flex-1 hidden w-0 lg:block min-h-screen">
                 <div class="absolute z-10 w-full h-full bg-white overflow-hidden">
-                    <img src="{{ asset('errors/naoshima.jpg') }}" alt="" class="object-cover w-full h-full">
+                    <img src="{{ asset('images/hiroshima.jpg') }}" alt="" class="object-cover w-full h-full">
                 </div>
             </div>            
         </div>

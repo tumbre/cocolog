@@ -1,1 +1,1 @@
-<img src="/logo/thinking.png" class="w-48 mix-blend-multiply">
+<img src="/images/logo/thinking.png" class="w-48 mix-blend-multiply">

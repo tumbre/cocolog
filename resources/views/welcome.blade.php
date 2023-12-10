@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="w-full md:w-3/4 h-96 md:h-screen relative">
-            <img src="{{ asset('errors/naoshima.jpg') }}" alt=""
+            <img src="{{ asset('images/naoshima.jpg') }}" alt=""
                 class="absolute inset-0 object-cover object-top h-full w-full">
         </div>
     </div>
