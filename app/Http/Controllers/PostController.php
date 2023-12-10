@@ -45,10 +45,10 @@ class PostController extends Controller
         $sentimentData = $sentimentService->analyzeSentiment($text);
 
         $post = new Post();
-        $post->created_at = $inputs['created_at'];
+        $post->user_id = auth()->user()->id;
         $post->title = $inputs['title'];
         $post->body = $inputs['body'];
-        $post->user_id = auth()->user()->id;
+        $post->created_at = $inputs['created_at'];
         $post->score = $sentimentData['score'];
         $post->magnitude = $sentimentData['magnitude'];
 

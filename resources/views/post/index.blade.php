@@ -53,6 +53,9 @@
                         </section>
                     @endforeach
                 </div>
+                <div class="pt-12 md:pt-24">
+                    {{ $posts->appends(request()->input())->links() }}
+                </div>
             @endif
         </div>
     </section>
