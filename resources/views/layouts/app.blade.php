@@ -24,6 +24,9 @@
 
     <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.0/Chart.bundle.js" integrity="sha512-Q9b0myMAI+IqHh5ldQJTh3ZXkVHwlcVF+H6+LF/QU3n0XmQp7w/kjapf+I3os0GhvJcZXCr5dAhhs5AbiZafwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- autoComplete.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
 </head>
 <body class="Zen Kaku Gothic New bg-first text-fourth antialiased">
     <div class="min-h-screen">
