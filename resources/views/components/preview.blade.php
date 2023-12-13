@@ -1,7 +1,7 @@
 <script src="{{ asset('/js/preview.js') }}"></script>
 
 <div id="image-preview-container">
-    <label for="image" class="font-semibold leading-none mt-6 mb-2">画像（1MBまで） </label>
+    <label for="image" class="font-semibold leading-none mt-6 mb-2">画像（10MBまで） </label>
     <label id="add-image-button"
         class="mt-2 mb-4 bg-white rounded-full flex justify-center items-center border border-gray-400 hover:shadow-lg transition duration-300 ease-in-out cursor-pointer">
         <i class="fa-solid fa-camera"></i>
