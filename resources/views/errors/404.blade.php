@@ -1,4 +1,4 @@
-@section('title', __('403'))
+@section('title', __('404'))
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
