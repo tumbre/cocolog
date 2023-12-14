@@ -9,6 +9,7 @@
         "google/cloud": "*",
         "google/cloud-language": "^0.28.5",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "2.7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
