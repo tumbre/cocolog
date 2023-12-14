@@ -14,13 +14,15 @@ use Google\Cloud\Language\LanguageClient;
 class PostController extends Controller
 {
     protected $postService;
+    protected $imageUploadService;
 
-    public function __construct(ValidationService $validationService, PostService $postService)
+    public function __construct(ValidationService $validationService, PostService $postService, ImageUploadService $imageUploadService)
     {
         $this->middleware('AuthenticateUser');
         $this->middleware('checkPostOwnership')->only('show', 'edit', 'update', 'destroy');
         $this->validationService = $validationService;
         $this->postService = $postService;
+        $this->imageUploadService = $imageUploadService;
     }
 
     public function index(Request $request)
@@ -42,7 +44,7 @@ class PostController extends Controller
     {
         $inputs = $this->validationService->validatePostData($request->all());
 
-        $text = $inputs['body'] . ' ' . $inputs['body'];
+        $text = $inputs['title'] . ' ' . $inputs['body'];
         $sentimentData = $sentimentService->analyzeSentiment($text);
 
         $post = new Post();
@@ -96,6 +98,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->imageUploadService->deleteImage($post->image);
 		$post->delete();
 		return redirect()->route('post.index')->with('message', '投稿を削除しました');
     }
