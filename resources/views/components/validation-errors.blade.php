@@ -2,18 +2,12 @@
 
 @if ($errors->any())
   <div {{ $attributes }}>
-    <div class="font-medium text-red-600">
-        エラーの内容を確認してください🙏
-    </div>
+    <div class="text-start font-semibold">エラーが発生しました..😞</div>
 
-    <ul class="mt-3 list-disc list-inside text-sm test-red-600">
+    <ul class="mt-3 mb-12 list-disc list-inside text-sm text-start">
       @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
       @endforeach
-
-      @if (empty($errors->first('image')))
-        <li>写真を選択していた場合は再度選択してください。</li>
-      @endif
     </ul>
   </div>
 @endif
