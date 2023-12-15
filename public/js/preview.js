@@ -37,15 +37,17 @@ window.addEventListener('DOMContentLoaded', () => {
     const existingImage = document.querySelector('#existing-image');
     const removeIcon = document.querySelector('#remove-icon');
 
-    const imgContainer = document.createElement('div');
-    imgContainer.classList.add('preview-image-wrapper', 'relative');
+    if (existingImage) {
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add('preview-image-wrapper', 'relative');
 
-    removeIcon.addEventListener('click', function () {
-        input.value = '';
-        previewContainer.innerHTML = '';
-    });
+        removeIcon.addEventListener('click', function () {
+            input.value = '';
+            previewContainer.innerHTML = '';
+        });
 
-    imgContainer.appendChild(existingImage);
-    imgContainer.appendChild(removeIcon);
-    previewContainer.appendChild(imgContainer);
+        imgContainer.appendChild(existingImage);
+        imgContainer.appendChild(removeIcon);
+        previewContainer.appendChild(imgContainer);
+    }
 });
