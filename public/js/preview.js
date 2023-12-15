@@ -37,8 +37,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const removeIcon = document.querySelector('#remove-icon');
 
     if (existingImage) {
-        const existingImage = document.querySelector('#existing-image');
-        const imageName = existingImage.src.split('/').pop();
+        const isLocal = window.location.hostname === 'localhost';
+        const imageName = isLocal ? existingImage.src.split('/').pop() : existingImage.src;
 
         removeIcon.addEventListener('click', function () {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
