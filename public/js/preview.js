@@ -36,14 +36,28 @@ window.addEventListener('DOMContentLoaded', () => {
     const existingImage = document.querySelector('#existing-image');
     const removeIcon = document.querySelector('#remove-icon');
 
-    const imgContainer = document.createElement('div');
-    imgContainer.classList.add('preview-image-wrapper', 'relative');
+    if (existingImage) {
+        const existingImage = document.querySelector('#existing-image');
+        const imageName = existingImage.src.split('/').pop();
 
-    removeIcon.addEventListener('click', function () {
-        previewContainer.innerHTML = '';
-    });
+        removeIcon.addEventListener('click', function () {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    imgContainer.appendChild(existingImage);
-    imgContainer.appendChild(removeIcon);
-    previewContainer.appendChild(imgContainer);
+            const xhr = new XMLHttpRequest();
+            xhr.open("DELETE", "/delete-image", true);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.setRequestHeader("X-CSRF-TOKEN", csrfToken);
+
+            xhr.send(JSON.stringify({ imageName }));
+
+            previewContainer.innerHTML = '';
+        });
+
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add('preview-image-wrapper', 'relative');
+
+        imgContainer.appendChild(existingImage);
+        imgContainer.appendChild(removeIcon);
+        previewContainer.appendChild(imgContainer);
+    }
 });

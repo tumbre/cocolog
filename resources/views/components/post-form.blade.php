@@ -59,7 +59,7 @@
     </div>
 </div>
 
-@if (!isset($errors) || count($errors) === 0)
+@if (!isset($errors) || count($errors) === 0 && !isset($post))
     <script>
         window.onload = function () {
             const created_at_param = new URLSearchParams(window.location.search).get('created_at');
