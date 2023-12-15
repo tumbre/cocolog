@@ -16,7 +16,7 @@
                     <img src="{{ asset('storage/images/' . $post->image) }}" id="existing-image"
                         class="rounded-md mt-4 w-full";>
                 @else
-                    <img id="existing-image" class="rounded-md mt-4 w-full" src="{{ $post->image }}">
+                    <img src="{{ $post->image }}" id="existing-image" class="rounded-md mt-4 w-full">
                 @endif
                 <i id="remove-icon" class="fa-solid fa-circle-xmark fa-2xl remove-image absolute top-2 right-0 p-4 text-third cursor-pointer"></i>
             </div>

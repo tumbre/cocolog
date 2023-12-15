@@ -1,3 +1,5 @@
+<script src="{{ asset('/js/chartDescription.js') }}"></script>
+
 @section('title', 'こころのログ')
 
 <x-app-layout>
@@ -21,11 +23,7 @@
                     <p class="ml-1 text-end text-xs">感情的なアウトプットの量</p>
                 </div>
                 <canvas id="magnitude_chart"></canvas>
-                <div class="flex justify-end text-third items-center ml-36 mt-2">
-                    <i class="fas fa-question-circle text-2xl mr-1"></i>
-                    <p class="mr-4 text-end text-xs sm:text-sm">
-                        このチャートは、それぞれの日記における感情的な表現の数を点数化しています。ポジティブ・ネガティブは判定しません。</p>
-                </div>
+                @include('components.chart/magnitude-tooltip')
             </div>
         </div>
         <div class="w-full space-y-5 md:space-y-8">
@@ -38,10 +36,7 @@
                     <p class="ml-1 text-end text-xs">ネガティブ傾向</p>
                 </div>
                 <div><canvas id="score_chart"></canvas></div>
-                <div class="flex justify-end text-third items-center ml-36 mt-2">
-                    <i class="fas fa-question-circle text-2xl mr-1"></i>
-                    <p class="mr-4 text-end text-xs sm:text-sm">このチャートは、それぞれの日記におけるポジティブ・ネガティブ傾向を示しています。</p>
-                </div>
+                @include('components.chart/score-tooltip')
             </div>
         </div>
     </div>
