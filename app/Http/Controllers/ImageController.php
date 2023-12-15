@@ -16,8 +16,8 @@ class ImageController extends Controller
         if (app()->isLocal()) {
             Storage::delete("public/images/{$imageName}");
         } else {
-            $imageName = basename($imageName);
-            Storage::disk('s3')->delete($imageName);
+            $s3ImageName = basename(parse_url($imageName, PHP_URL_PATH));
+            Storage::disk('s3')->delete($s3ImageName);
         }
 
         $post = Post::where('image', $imageName)->first();
