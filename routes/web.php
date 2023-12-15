@@ -6,7 +6,6 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CalendarController;
-use App\Http\Controllers\ImageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,6 +33,5 @@ Route::post('like/{post}', [LikeController::class, 'create'])->name('like');
 Route::delete('unlike/{post}', [LikeController::class, 'destroy'])->name('unlike');
 Route::get('/calendar', [CalendarController::class, 'show'])->name('calendar');
 Route::get('get_posts', [CalendarController::class, 'getPosts'])->name('calendar.getPosts');
-Route::delete('/delete-image', [ImageController::class, 'deleteImage'])->name('delete-image');
 
 require __DIR__ . '/auth.php';

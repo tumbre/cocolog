@@ -9,8 +9,9 @@ class ImageUploadService
 {
     public function uploadImage($request, $post)
     {
+        $this->deleteImage($post->image);
+
         if ($request->hasFile('image')) {
-            $this->deleteImage($post->image);
 
             $original = $request->file('image')->getClientOriginalName();
             $name = date('Ymd_His') . '_' . pathinfo($original, PATHINFO_FILENAME) . '.jpg';
@@ -34,6 +35,8 @@ class ImageUploadService
             }
 
             $resizedImage->destroy();
+        } else {
+            $post->image = null;
         }
     }
 

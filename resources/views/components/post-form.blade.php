@@ -25,7 +25,7 @@
             <div class="w-full flex flex-col">
                 <label for="title" class="font-semibold leading-none mt-6 mb-2">タイトル</label>
                 <input type="text" name="title"
-                    class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md border-second focus:border-seventh focus:ring-seventh"
+                    class="w-auto py-2 border border-gray-300 rounded-md border-second focus:border-seventh focus:ring-seventh placeholder-gray-300"
                     id="title"
                     placeholder="Enter Title"
                     @if (isset($post))
@@ -39,8 +39,8 @@
         <div class="w-full flex flex-col">
             <label for="body" class="font-semibold leading-none mt-6 mb-2">本文</label>
             <textarea name="body"
-                class="w-auto py-2 border border-gray-300 rounded-md h-96 border-second focus:border-seventh focus:ring-seventh"
-                id="body">@if (isset($post)){{ old('body', $post->body) }}@else{{ old('body') }}@endif</textarea>
+                class="w-auto py-2 border border-gray-300 rounded-md border-second focus:border-seventh focus:ring-seventh placeholder-gray-300 h-96"
+                id="body" placeholder="Enter Content">@if (isset($post)){{ old('body', $post->body) }}@else{{ old('body') }}@endif</textarea>
         </div>
 
         <div class="mt-16 mb-20">
