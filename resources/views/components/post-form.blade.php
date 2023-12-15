@@ -9,7 +9,7 @@
         @csrf
         <div class="md:flex items-center my-8">
             <div class="w-full flex flex-col">
-                <label for="created_at" class="font-semibold leading-none mt-6 mb-2">日付</label>
+                <label for="created_at" class="font-semibold leading-none mt-2 md:mt-6 mb-2">日付</label>
                 <input type="date" name="created_at"
                     class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md border-second focus:border-seventh focus:ring-seventh"
                     @if (isset($post))
@@ -23,7 +23,7 @@
 
         <div class="md:flex items-center my-8">
             <div class="w-full flex flex-col">
-                <label for="title" class="font-semibold leading-none mt-6 mb-2">タイトル</label>
+                <label for="title" class="font-semibold leading-none mt-2 md:mt-6 mb-2">タイトル</label>
                 <input type="text" name="title"
                     class="w-auto py-2 border border-gray-300 rounded-md border-second focus:border-seventh focus:ring-seventh placeholder-gray-300"
                     id="title"
@@ -37,18 +37,18 @@
         </div>
 
         <div class="w-full flex flex-col">
-            <label for="body" class="font-semibold leading-none mt-6 mb-2">本文</label>
+            <label for="body" class="font-semibold leading-none mt-2 md:mt-6 mb-2">本文</label>
             <textarea name="body"
-                class="w-auto py-2 border border-gray-300 rounded-md border-second focus:border-seventh focus:ring-seventh placeholder-gray-300 h-96"
+                class="w-auto py-2 border border-gray-300 rounded-md border-second focus:border-seventh focus:ring-seventh placeholder-gray-300 h-72 md:h-96"
                 id="body" placeholder="Enter Content">@if (isset($post)){{ old('body', $post->body) }}@else{{ old('body') }}@endif</textarea>
         </div>
 
-        <div class="mt-16 mb-20">
+        <div class="mt-8 md:mt-16 mb-16 md:mb-20">
             @include('components.preview')
         </div>
 
         <button type="submit"
-            class="my-12 w-full bg-black text-white text-sm md:text-base rounded-full border border-seventh cursor-pointer hover:shadow-lg transition duration-300 ease-in-out">
+            class="my-0 md:my-12 w-full bg-black text-white text-sm md:text-base rounded-full border border-seventh cursor-pointer hover:shadow-lg transition duration-300 ease-in-out">
             <div class="flex items-center justify-center">
                 <i class="fa-solid fa-pen-fancy"></i>
                 <p class="ml-2">記録する</p>
