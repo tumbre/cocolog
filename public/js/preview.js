@@ -32,29 +32,19 @@ function showPreview(event) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+    const input = document.querySelector('#image');
     const previewContainer = document.querySelector('#image-preview');
     const existingImage = document.querySelector('#existing-image');
     const removeIcon = document.querySelector('#remove-icon');
 
     if (existingImage) {
-        const isLocal = window.location.hostname === 'localhost';
-        const imageName = isLocal ? existingImage.src.split('/').pop() : existingImage.src;
-
-        removeIcon.addEventListener('click', function () {
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-            const xhr = new XMLHttpRequest();
-            xhr.open("DELETE", "/delete-image", true);
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhr.setRequestHeader("X-CSRF-TOKEN", csrfToken);
-
-            xhr.send(JSON.stringify({ imageName }));
-
-            previewContainer.innerHTML = '';
-        });
-
         const imgContainer = document.createElement('div');
         imgContainer.classList.add('preview-image-wrapper', 'relative');
+
+        removeIcon.addEventListener('click', function () {
+            input.value = '';
+            previewContainer.innerHTML = '';
+        });
 
         imgContainer.appendChild(existingImage);
         imgContainer.appendChild(removeIcon);
