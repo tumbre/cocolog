@@ -8,6 +8,7 @@
         <span class="ml-2 text-sm md:text-base">写真を選択する</span>
         <input id="image" type="file" name="image" class="hidden" multiple onchange="showPreview(event)">
     </label>
+    <input type="hidden" id="delete-image" name="delete_image" value="0">
     <div id="image-preview"></div>
     @isset($post)
         @if ($post->image)
