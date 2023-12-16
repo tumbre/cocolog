@@ -9,7 +9,10 @@ class ImageUploadService
 {
     public function uploadImage($request, $post)
     {
-        $this->deleteImage($post->image);
+        if ($request->delete_image == '1' || $request->image) {
+            $this->deleteImage($post->image);
+            $post->image = null;
+        }
 
         if ($request->hasFile('image')) {
 
@@ -35,8 +38,6 @@ class ImageUploadService
             }
 
             $resizedImage->destroy();
-        } else {
-            $post->image = null;
         }
     }
 

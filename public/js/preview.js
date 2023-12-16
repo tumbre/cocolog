@@ -42,7 +42,8 @@ window.addEventListener('DOMContentLoaded', () => {
         imgContainer.classList.add('preview-image-wrapper', 'relative');
 
         removeIcon.addEventListener('click', function () {
-            input.value = '';
+            const hiddenInput = document.getElementById('delete-image');
+            hiddenInput.value = '1';
             previewContainer.innerHTML = '';
         });
 
