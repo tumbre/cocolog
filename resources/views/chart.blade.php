@@ -65,7 +65,7 @@
                 pointHoverBorderWidth: 10, //マウスオーバー時の点の半径。
             }]
         },
-        @include('components.chart_options')
+        @include('components.chart/chart_options')
     });
 
     // 感情のクオリティ
@@ -92,7 +92,7 @@
             labels: @json($formattedDates),
             datasets: datasets,
         },
-        @include('components.chart_options')
+        @include('components.chart/chart_options')
     });
 
     // 表示期間の切り替え
