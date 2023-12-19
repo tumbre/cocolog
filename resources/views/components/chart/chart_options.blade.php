@@ -30,7 +30,7 @@ options: {
             if (!tooltipEl) {
                 tooltipEl = document.createElement('div');
                 tooltipEl.id = 'chartjs-tooltip';
-                tooltipEl.innerHTML = "<table></table>"
+                tooltipEl.innerHTML = "<table class='text-xs lg:text-sm'></table>";
                 this._chart.canvas.parentNode.appendChild(tooltipEl);
             }
     
@@ -46,7 +46,6 @@ options: {
     
             // メタデータの取得
             let index = tooltipModel.dataPoints[0].index;
-            console.log(this._chart.data.datasets[0]);
             let title = this._chart.data.datasets[0].titles[index];
     
             // テキストをセット
@@ -80,7 +79,7 @@ options: {
             tooltipEl.style.opacity = 1;
             tooltipEl.style.left = positionX + tooltipModel.caretX + 'px';
             tooltipEl.style.top = positionY + tooltipModel.caretY + 'px';
-            tooltipEl.classList.add('p-2', 'text-xs', 'lg:text-sm');
+            tooltipEl.classList.add('p-2');
         }
     }
 }
