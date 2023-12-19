@@ -19,6 +19,7 @@ class ChartController extends Controller
         $numberOfDays = $request->input('numberOfDays', 30);
 
         $latestPosts = Post::where('user_id', $user->id)
+            ->where('created_at', '<=', now())
             ->where('created_at', '>=', Carbon::now()->subDays($numberOfDays))
             ->orderBy('created_at')
             ->get();
