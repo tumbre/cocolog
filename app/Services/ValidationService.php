@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class ValidationService
 {
-    public function validatePostData($data, $postId = null)
+    public function validatePostData($data, $userId = null, $postId = null)
     {
         $validator = Validator::make($data, [
             'title' => 'required|max:255',
@@ -16,8 +16,9 @@ class ValidationService
             'image' => 'image|max:10000',
             'created_at' => [
                 'date',
-                Rule::unique('posts')->ignore($postId)->where(function ($query) use ($data) {
-                    return $query->where('created_at', date('Y-m-d', strtotime($data['created_at'])));
+                Rule::unique('posts')->ignore($postId)->where(function ($query) use ($data, $userId) {
+                    return $query->where('created_at', date('Y-m-d', strtotime($data['created_at'])))
+                        ->where('user_id', $userId);
                 }),
             ],
             'score' => 'numeric',

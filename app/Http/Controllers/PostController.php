@@ -43,7 +43,7 @@ class PostController extends Controller
 
     public function store(Request $request, SentimentAnalysisService $sentimentService, ImageUploadService $imageUploadService)
     {
-        $inputs = $this->validationService->validatePostData($request->all());
+        $inputs = $this->validationService->validatePostData($request->all(), auth()->user()->id);
 
         $text = $inputs['title'] . ' ' . $inputs['body'];
         $sentimentData = $sentimentService->analyzeSentiment($text);
@@ -79,7 +79,7 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post, SentimentAnalysisService $sentimentService, ImageUploadService $imageUploadService)
     {
-        $inputs = $this->validationService->validatePostData($request->all(), $post->id);
+        $inputs = $this->validationService->validatePostData($request->all(), auth()->user()->id, $post->id);
 
         $text = $inputs['body'] . ' ' . $inputs['body'];
         $sentimentData = $sentimentService->analyzeSentiment($text);
