@@ -15,6 +15,7 @@ class PostController extends Controller
 {
     protected $postService;
     protected $imageUploadService;
+    protected $validationService;
 
     public function __construct(ValidationService $validationService, PostService $postService, ImageUploadService $imageUploadService)
     {
@@ -78,7 +79,7 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post, SentimentAnalysisService $sentimentService, ImageUploadService $imageUploadService)
     {
-        $inputs = $this->validationService->validatePostData($request->all());
+        $inputs = $this->validationService->validatePostData($request->all(), $post->id);
 
         $text = $inputs['body'] . ' ' . $inputs['body'];
         $sentimentData = $sentimentService->analyzeSentiment($text);
