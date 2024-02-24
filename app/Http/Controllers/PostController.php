@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         $user = auth()->user();
         $posts = $this->postService->getPostsBySearch($request, $user);
-        $allPosts = Post::where('user_id', $user->id)->get(['title', 'body'])->flatMap(function ($post) { return [$post->title, $post->body]; })->filter()->values()->toArray();
+        $allPosts = Post::where('user_id', $user->id)->get(['title'])->flatMap(function ($post) { return [$post->title]; })->filter()->values()->toArray();
         $search = $request->input('search');
 
         return view('post.index', compact('user', 'posts', 'allPosts', 'search'));
