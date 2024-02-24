@@ -21,7 +21,7 @@ class LikeController extends Controller
     {
         $user = auth()->user();
         $posts = $this->postService->getPostsBySearch($request, $user, true);
-        $allPosts = Post::where('user_id', $user->id)->where('anniversary', true)->get(['title', 'body'])->flatMap(function ($post) { return [$post->title, $post->body]; })->filter()->values()->toArray();
+        $allPosts = Post::where('user_id', $user->id)->where('anniversary', true)->get(['title'])->flatMap(function ($post) { return [$post->title]; })->filter()->values()->toArray();
         $search = $request->input('search');
 
         return view('post.index', compact('user', 'posts', 'allPosts', 'search'));
