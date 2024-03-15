@@ -9,12 +9,6 @@
 <img width="280" src="https://i.gyazo.com/60db8a1abd88e89a4e01645fc7502edd.png">
 <img width="280" src="https://i.gyazo.com/1c9d99853eeb729785f6102e36e9b2c1.png">
 <br><br>
-## アプリURL
-#### https://coco6.site  
-メールアドレス : guest@example.com  
-パスワード : guestpass12  
-体験用に上記の情報からログインすることができます。
-<br><br>
 ## 使用技術  
 - PHP 8.2
 - Laravel 10.3
